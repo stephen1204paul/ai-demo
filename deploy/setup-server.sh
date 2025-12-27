@@ -14,28 +14,58 @@ echo ""
 echo "[1/10] Updating system packages..."
 apt update && apt upgrade -y
 
+# Install prerequisites
+echo "[2/10] Installing prerequisites..."
+apt install -y software-properties-common wget curl gnupg2 lsb-release
+
+# Add Python 3.11 repository (deadsnakes PPA)
+echo "[3/10] Adding Python 3.11 repository..."
+add-apt-repository -y ppa:deadsnakes/ppa
+apt update
+
+# Add PostgreSQL official repository
+echo "[4/10] Adding PostgreSQL repository..."
+sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+apt update
+
 # Install required system packages
-echo "[2/10] Installing system dependencies..."
+echo "[5/10] Installing system dependencies..."
 apt install -y \
     python3.11 \
     python3.11-venv \
+    python3.11-dev \
     python3-pip \
     postgresql-15 \
     postgresql-contrib-15 \
+    postgresql-15-pgvector \
     nginx \
     git \
     certbot \
     python3-certbot-nginx \
-    ufw
+    ufw \
+    build-essential
 
 # Configure firewall
-echo "[3/10] Configuring firewall..."
+echo "[6/10] Configuring firewall..."
 ufw allow OpenSSH
 ufw allow 'Nginx Full'
 ufw --force enable
 
+# Install pgvector extension (if package not available, build from source)
+if ! dpkg -l | grep -q postgresql-15-pgvector; then
+    echo "Building pgvector from source..."
+    cd /tmp
+    git clone --branch v0.5.1 https://github.com/pgvector/pgvector.git
+    cd pgvector
+    make
+    make install
+    cd /root
+    rm -rf /tmp/pgvector
+fi
+
 # Set up PostgreSQL
-echo "[4/10] Setting up PostgreSQL database..."
+echo "[7/10] Setting up PostgreSQL database..."
 sudo -u postgres psql <<EOF
 CREATE DATABASE ai_comedy_lab;
 CREATE USER ai_comedy_user WITH PASSWORD 'CHANGE_THIS_PASSWORD';
@@ -47,13 +77,13 @@ GRANT ALL PRIVILEGES ON DATABASE ai_comedy_lab TO ai_comedy_user;
 CREATE EXTENSION IF NOT EXISTS vector;
 EOF
 
-echo "[5/10] Granting database privileges..."
+echo "[8/10] Granting database privileges..."
 sudo -u postgres psql -d ai_comedy_lab <<EOF
 GRANT ALL ON SCHEMA public TO ai_comedy_user;
 EOF
 
 # Clone application from git
-echo "[6/10] Cloning application from git repository..."
+echo "[9/10] Cloning application from git repository..."
 read -p "Enter your git repository URL (e.g., https://github.com/username/ai-comedy-lab.git): " GIT_REPO
 
 if [ -z "$GIT_REPO" ]; then
@@ -73,17 +103,17 @@ fi
 mv ai-comedy-lab-temp ai-comedy-lab
 chown -R www-data:www-data /var/www/ai-comedy-lab
 
-echo "[7/10] Application cloned successfully!"
+echo "[10/10] Application cloned successfully!"
 
 # Set up Python virtual environment
-echo "[8/10] Setting up Python virtual environment..."
+echo "[11/14] Setting up Python virtual environment..."
 cd /var/www/ai-comedy-lab
 sudo -u www-data python3.11 -m venv venv
 sudo -u www-data venv/bin/pip install --upgrade pip
 sudo -u www-data venv/bin/pip install -r requirements.txt
 
 # Create environment file
-echo "[9/10] Creating environment file..."
+echo "[12/14] Creating environment file..."
 cat > /var/www/ai-comedy-lab/.env <<EOF
 # Flask Configuration
 FLASK_APP=run.py
@@ -123,12 +153,12 @@ echo ""
 read -p "Press Enter once you've updated the .env file..."
 
 # Run database migrations
-echo "[10/10] Running database migrations..."
+echo "[13/14] Running database migrations..."
 cd /var/www/ai-comedy-lab
 sudo -u www-data venv/bin/flask db upgrade
 
 # Set up systemd service
-echo "Setting up systemd service..."
+echo "[14/14] Setting up systemd service..."
 cp deploy/ai-comedy-lab.service /etc/systemd/system/
 systemctl daemon-reload
 systemctl enable ai-comedy-lab

@@ -1,0 +1,487 @@
+{
+  "dialogues": [
+    {
+      "comedian": "vivek",
+      "movie_name": "Run",
+      "year": 2002,
+      "character_name": "Vivek",
+      "scene_description": "Vivek's social commentary on education system",
+      "dialogue_tamil": "நம்ம எஜுகேஷன் சிஸ்டம் memory test, not knowledge test",
+      "dialogue_english": "Our education system is a memory test, not a knowledge test!",
+      "context": "Witty social commentary on the flaws in the education system",
+      "emotion": "comedy_intellectual",
+      "metadata": {
+        "tags": [
+          "education",
+          "social_commentary",
+          "system",
+          "wisdom"
+        ]
+      },
+      "dialogue_tanglish": "Namma education system memory test, not knowledge test!"
+    },
+    {
+      "comedian": "vivek",
+      "movie_name": "Anniyan",
+      "year": 2005,
+      "character_name": "Chari",
+      "scene_description": "Philosophical comedy about corruption",
+      "dialogue_tamil": "சின்ன சின்ன முறைகேடுகள் சேர்ந்துதான் பெரிய ஊழல்",
+      "dialogue_english": "Small small irregularities together become big corruption!",
+      "context": "Deep message delivered with humor about societal issues",
+      "emotion": "comedy_philosophical",
+      "metadata": {
+        "tags": [
+          "corruption",
+          "society",
+          "philosophy",
+          "message"
+        ]
+      },
+      "dialogue_tanglish": "Chinna chinna irregularities serndhudhan periya corruption!"
+    },
+    {
+      "comedian": "vivek",
+      "movie_name": "Sivaji",
+      "year": 2007,
+      "character_name": "Software Subramaniam",
+      "scene_description": "Vivek on technology and tradition",
+      "dialogue_tamil": "நாம tradition-அ மறக்காம technology-அ கத்துக்கணும்",
+      "dialogue_english": "We must learn technology without forgetting our traditions!",
+      "context": "Balancing modernity with cultural values through humor",
+      "emotion": "comedy_wisdom",
+      "metadata": {
+        "tags": [
+          "technology",
+          "tradition",
+          "culture",
+          "balance"
+        ]
+      },
+      "dialogue_tanglish": "Naama tradition-a marakkama technology-a kathukanum!"
+    },
+    {
+      "comedian": "vivek",
+      "movie_name": "Saamy",
+      "year": 2003,
+      "character_name": "Vivek",
+      "scene_description": "Wordplay and linguistic humor",
+      "dialogue_tamil": "English-ல என்ன சொன்னாலும் தமிழ்ல translate பண்ணா comedy-தான்",
+      "dialogue_english": "Whatever you say in English, if you translate to Tamil, it becomes comedy!",
+      "context": "Meta-humor about language differences and translation",
+      "emotion": "comedy_linguistic",
+      "metadata": {
+        "tags": [
+          "language",
+          "wordplay",
+          "english",
+          "tamil",
+          "meta"
+        ]
+      },
+      "dialogue_tanglish": "English-la enna sonnaalum Tamil-la translate pannaa comedy dhan!"
+    },
+    {
+      "comedian": "vivek",
+      "movie_name": "Parthiban Kanavu",
+      "year": 2003,
+      "character_name": "Azhagesan",
+      "scene_description": "Environmental message with humor",
+      "dialogue_tamil": "மரம் வளர்ப்போம், பூமி காப்போம்",
+      "dialogue_english": "Let's grow trees, let's save the earth - even comedy can have a message!",
+      "context": "Environmental awareness delivered through entertaining comedy",
+      "emotion": "comedy_educational",
+      "metadata": {
+        "tags": [
+          "environment",
+          "trees",
+          "message",
+          "awareness",
+          "green"
+        ]
+      },
+      "dialogue_tanglish": "Maram valarpom, boomi kaappom - even comedy can have a message!"
+    },
+    {
+      "comedian": "vivek",
+      "movie_name": "Dhool",
+      "year": 2003,
+      "character_name": "Vivek",
+      "scene_description": "Vivek on politics and corruption",
+      "dialogue_tamil": "அரசியல்வாதிகள் வாக்குறுதி தருவாங்க, ஆனா யாரும் வார்த்தை காப்பாங்கன்னு guarantee இல்ல",
+      "dialogue_english": "Politicians will give promises, but whether they keep their word - no guarantee!",
+      "context": "Political satire with realistic observations",
+      "emotion": "comedy_political",
+      "metadata": {
+        "tags": [
+          "politics",
+          "promises",
+          "satire",
+          "corruption"
+        ]
+      },
+      "dialogue_tanglish": "Politicians vaakkurudhi tharuvaanga, aana yaarum varthai kaappaanganu guarantee illa!"
+    },
+    {
+      "comedian": "vivek",
+      "movie_name": "Perazhagan",
+      "year": 2004,
+      "character_name": "Chinna",
+      "scene_description": "Vivek on inner beauty",
+      "dialogue_tamil": "அழகு முகத்துல இல்லை, மனசுல இருக்கு... ஆனா photo முகம் தான் வரும்",
+      "dialogue_english": "Beauty is not in the face, it's in the heart... but in photos only the face appears!",
+      "context": "Philosophical message with practical reality check",
+      "emotion": "comedy_wisdom",
+      "metadata": {
+        "tags": [
+          "beauty",
+          "inner_beauty",
+          "reality",
+          "wisdom"
+        ]
+      },
+      "dialogue_tanglish": "Azhagu mugatthula illa, manasula irukku... aana photo-la mukam dhan varum!"
+    },
+    {
+      "comedian": "vivek",
+      "movie_name": "Vettaiyaadu Vilaiyaadu",
+      "year": 2006,
+      "character_name": "Ilamaaran",
+      "scene_description": "Vivek on modern technology",
+      "dialogue_tamil": "Technology வளர்ந்திருக்கு, ஆனா மனித நேயம் குறைஞ்சிருக்கு",
+      "dialogue_english": "Technology has advanced, but humanity has reduced!",
+      "context": "Social commentary on tech-human balance",
+      "emotion": "comedy_philosophical",
+      "metadata": {
+        "tags": [
+          "technology",
+          "humanity",
+          "society",
+          "progress"
+        ]
+      },
+      "dialogue_tanglish": "Technology valarndhirukku, aana humanity korainjirukku!"
+    },
+    {
+      "comedian": "vivek",
+      "movie_name": "Aaru",
+      "year": 2005,
+      "character_name": "Vivek",
+      "scene_description": "Vivek on hero worship",
+      "dialogue_tamil": "Hero-வ கடவுள் மாதிரி வணங்கறோம், ஆனா நல்ல மனிதனை மதிக்கறதில்லை",
+      "dialogue_english": "We worship heroes like gods, but don't respect good human beings!",
+      "context": "Social critique on misplaced priorities",
+      "emotion": "comedy_critical",
+      "metadata": {
+        "tags": [
+          "hero_worship",
+          "society",
+          "priorities",
+          "critique"
+        ]
+      },
+      "dialogue_tanglish": "Hero-va kadavul madhiri vanangrom, aana nalla manidhanai mathikkaradhilla!"
+    },
+    {
+      "comedian": "vivek",
+      "movie_name": "Billa",
+      "year": 2007,
+      "character_name": "Saamikkannu",
+      "scene_description": "Vivek on law and order",
+      "dialogue_tamil": "சட்டம் எல்லாருக்கும் சமம்னு சொல்றாங்க... ஆனா பணக்காரனுக்கு வேற, ஏழைக்கு வேற",
+      "dialogue_english": "They say law is equal for all... but one law for rich, another for poor!",
+      "context": "Hard-hitting social commentary on justice system",
+      "emotion": "comedy_justice",
+      "metadata": {
+        "tags": [
+          "law",
+          "equality",
+          "justice",
+          "class_divide"
+        ]
+      },
+      "dialogue_tanglish": "Law ellarukkum samam-nu solraanga... aana rich-ukku vera, poor-ukku vera!"
+    },
+    {
+      "comedian": "vivek",
+      "movie_name": "Pokkiri",
+      "year": 2007,
+      "character_name": "Vaigai Puyal Saravedi",
+      "scene_description": "Vivek on education and job market",
+      "dialogue_tamil": "MBA படிச்சா job கிடைக்கும்னு நினைச்சேன், இப்ப tea கடைல MBA வேஸ்ட்னு சொல்றாங்க",
+      "dialogue_english": "Thought MBA will get me job, now at tea shop they say MBA is waste!",
+      "context": "Unemployment crisis with educational humor",
+      "emotion": "comedy_educational",
+      "metadata": {
+        "tags": [
+          "education",
+          "mba",
+          "unemployment",
+          "reality"
+        ]
+      },
+      "dialogue_tanglish": "MBA padicha job kidaikumnu ninaichen, ippo tea kadai-la MBA waste-nu solraanga!"
+    },
+    {
+      "comedian": "vivek",
+      "movie_name": "Majaa",
+      "year": 2005,
+      "character_name": "Vivek",
+      "scene_description": "Vivek on relationships and materialism",
+      "dialogue_tamil": "காதல் பணத்துக்காக இல்லன்னு சொல்றாங்க, ஆனா பணம் இல்லாம காதல் நடக்காது",
+      "dialogue_english": "They say love is not for money, but without money love doesn't work!",
+      "context": "Practical wisdom about love and economics",
+      "emotion": "comedy_practical",
+      "metadata": {
+        "tags": [
+          "love",
+          "money",
+          "practical",
+          "relationships"
+        ]
+      },
+      "dialogue_tanglish": "Kaadhal panathukkaga illanu solraanga, aana panam illama kaadhal nadakkaadhu!"
+    },
+    {
+      "comedian": "vivek",
+      "movie_name": "Ghilli",
+      "year": 2004,
+      "character_name": "Thamizh's friend",
+      "scene_description": "Vivek on fitness and health",
+      "dialogue_tamil": "ஜிம் போய் உடம்பை வளர்க்கறோம், ஆனா மனசை வளர்க்க நேரம் இல்ல",
+      "dialogue_english": "We go to gym to build body, but no time to build the mind!",
+      "context": "Critique on physical vs mental development focus",
+      "emotion": "comedy_wisdom",
+      "metadata": {
+        "tags": [
+          "fitness",
+          "mind",
+          "priorities",
+          "health"
+        ]
+      },
+      "dialogue_tanglish": "Gym poi udambai valarkkrom, aana manasai valarkka time illa!"
+    },
+    {
+      "comedian": "vivek",
+      "movie_name": "Thiruvilaiyaadal Aarambam",
+      "year": 2006,
+      "character_name": "Sivaji",
+      "scene_description": "Vivek on cinema and reality",
+      "dialogue_tamil": "படத்துல பாக்கறதெல்லாம் real இல்ல, ஆனா படம் பார்த்து real-ல follow பண்றோம்",
+      "dialogue_english": "What we see in movies is not real, but we follow it in real life!",
+      "context": "Meta-commentary on cinema's influence on society",
+      "emotion": "comedy_meta",
+      "metadata": {
+        "tags": [
+          "cinema",
+          "reality",
+          "influence",
+          "society"
+        ]
+      },
+      "dialogue_tanglish": "Padathula paakkradhellam real illa, aana padam paathu real-la follow panrom!"
+    },
+    {
+      "comedian": "vivek",
+      "movie_name": "M. Kumaran Son of Mahalakshmi",
+      "year": 2004,
+      "character_name": "Vivek",
+      "scene_description": "Vivek on mothers and their love",
+      "dialogue_tamil": "தாய் அன்பு கடல் மாதிரி, அளக்க முடியாது... but பசங்க realize பண்றதுக்கு ரொம்ப நாள் ஆகும்",
+      "dialogue_english": "Mother's love is like ocean, immeasurable... but children take long to realize!",
+      "context": "Emotional message about maternal love",
+      "emotion": "comedy_emotional",
+      "metadata": {
+        "tags": [
+          "mother",
+          "love",
+          "family",
+          "wisdom"
+        ]
+      },
+      "dialogue_tanglish": "Thaai anbu kadal madhiri, alaka mudiyaadhu... but pasanga realize panradhukku romba naal aagum!"
+    },
+    {
+      "comedian": "vivek",
+      "movie_name": "Minnale",
+      "year": 2001,
+      "character_name": "Vivek",
+      "scene_description": "Vivek on English vs Tamil",
+      "dialogue_tamil": "English பேசினா smart-னு நினைக்கறோம், தமிழ் பேசினா backward-னு நினைக்கறோம் - இது தான் நம்ம problem",
+      "dialogue_english": "We think English means smart, Tamil means backward - that's our problem!",
+      "context": "Social commentary on language prejudice",
+      "emotion": "comedy_social",
+      "metadata": {
+        "tags": [
+          "language",
+          "english",
+          "tamil",
+          "prejudice",
+          "identity"
+        ]
+      },
+      "dialogue_tanglish": "English pesinaa smart-nu ninaikkrom, Tamil pesinaa backward-nu ninaikkrom - idhu dhan namma problem!"
+    },
+    {
+      "comedian": "vivek",
+      "movie_name": "Sivakasi",
+      "year": 2005,
+      "character_name": "Kanagavel",
+      "scene_description": "Vivek on honesty and society",
+      "dialogue_tamil": "உண்மை பேசினா மரியாதை இல்ல, பொய் சொன்னா politician ஆகலாம்",
+      "dialogue_english": "Speak truth, no respect. Tell lies, become politician!",
+      "context": "Cynical truth about honesty in modern society",
+      "emotion": "comedy_cynical",
+      "metadata": {
+        "tags": [
+          "honesty",
+          "lies",
+          "politics",
+          "society"
+        ]
+      },
+      "dialogue_tanglish": "Unmai pesinaa respect illa, poi sonnaa politician aagalaam!"
+    },
+    {
+      "comedian": "vivek",
+      "movie_name": "Kushi",
+      "year": 2000,
+      "character_name": "Vivek",
+      "scene_description": "Vivek on generation gap",
+      "dialogue_tamil": "நம்ம காலத்துல respect முக்கியம், இன்னைக்கு freedom முக்கியம்",
+      "dialogue_english": "In our time respect was important, today freedom is important!",
+      "context": "Observation on changing generational values",
+      "emotion": "comedy_generational",
+      "metadata": {
+        "tags": [
+          "generation",
+          "respect",
+          "freedom",
+          "values"
+        ]
+      },
+      "dialogue_tanglish": "Namma kaalaththula respect mukkiyam, innaiku freedom mukkiyam!"
+    },
+    {
+      "comedian": "vivek",
+      "movie_name": "Dum Dum Dum",
+      "year": 2001,
+      "character_name": "Vivek",
+      "scene_description": "Vivek on marriage traditions",
+      "dialogue_tamil": "கல்யாணத்துக்கு முன்னாடி ஜாதகம் பார்ப்பாங்க, கல்யாணம் ஆன பிறகு adjustment தான் முக்கியம்",
+      "dialogue_english": "Before marriage they check horoscope, after marriage only adjustment matters!",
+      "context": "Practical wisdom on marriage reality",
+      "emotion": "comedy_marriage",
+      "metadata": {
+        "tags": [
+          "marriage",
+          "horoscope",
+          "adjustment",
+          "reality"
+        ]
+      },
+      "dialogue_tanglish": "Kalyanathukku munnaadi jadhagam paarpanga, kalyanam aana piragu adjustment dhan mukkiyam!"
+    },
+    {
+      "comedian": "vivek",
+      "movie_name": "Kaakha Kaakha",
+      "year": 2003,
+      "character_name": "Vivek",
+      "scene_description": "Vivek on police and public",
+      "dialogue_tamil": "Police வேல சிரமமானது... public எப்பவும் complain பண்ணும், ஆனா cooperation பண்ண மாட்டாங்க",
+      "dialogue_english": "Police work is difficult... public always complains, but won't cooperate!",
+      "context": "Balanced view on law enforcement challenges",
+      "emotion": "comedy_balanced",
+      "metadata": {
+        "tags": [
+          "police",
+          "public",
+          "cooperation",
+          "duty"
+        ]
+      },
+      "dialogue_tanglish": "Police vela siramamaanadhu... public eppavum complain pannum, aana cooperation panna maattaanga!"
+    },
+    {
+      "comedian": "vivek",
+      "movie_name": "Youth",
+      "year": 2002,
+      "character_name": "Vivek",
+      "scene_description": "Vivek on youth and responsibility",
+      "dialogue_tamil": "Youth power பெருசு, ஆனா responsibility-ல youth interest இல்ல",
+      "dialogue_english": "Youth has great power, but no interest in responsibility!",
+      "context": "Message about youth potential and accountability",
+      "emotion": "comedy_motivational",
+      "metadata": {
+        "tags": [
+          "youth",
+          "power",
+          "responsibility",
+          "motivation"
+        ]
+      },
+      "dialogue_tanglish": "Youth power perusu, aana responsibility-la youth interest illa!"
+    },
+    {
+      "comedian": "vivek",
+      "movie_name": "Thirupaachi",
+      "year": 2005,
+      "character_name": "Sivagiri's friend",
+      "scene_description": "Vivek on caste and unity",
+      "dialogue_tamil": "ஜாதி பார்க்கறதுல நம்ம expert, ஆனா மனிதத்தை பார்க்க மறந்துட்டோம்",
+      "dialogue_english": "We're experts in seeing caste, but forgot to see humanity!",
+      "context": "Strong social message against casteism",
+      "emotion": "comedy_social",
+      "metadata": {
+        "tags": [
+          "caste",
+          "unity",
+          "humanity",
+          "social_message"
+        ]
+      },
+      "dialogue_tanglish": "Jaadhi paakkradhu-la namma expert, aana humanity paakka marandhuttom!"
+    },
+    {
+      "comedian": "vivek",
+      "movie_name": "Marudhamalai",
+      "year": 2007,
+      "character_name": "Vivek",
+      "scene_description": "Vivek on superstition and science",
+      "dialogue_tamil": "Science படிக்கறோம், ஆனா superstition-ஐ follow பண்றோம்",
+      "dialogue_english": "We study science, but still follow superstition!",
+      "context": "Irony of education vs beliefs",
+      "emotion": "comedy_ironic",
+      "metadata": {
+        "tags": [
+          "science",
+          "superstition",
+          "education",
+          "beliefs"
+        ]
+      },
+      "dialogue_tanglish": "Science padikkrom, aana superstition-ai follow panrom!"
+    },
+    {
+      "comedian": "vivek",
+      "movie_name": "Dasavathaaram",
+      "year": 2008,
+      "character_name": "Kamal's friend",
+      "scene_description": "Vivek on global warming",
+      "dialogue_tamil": "Global warming பத்தி எல்லாரும் பேசறாங்க, ஆனா யாரும் மாத்த ready இல்ல",
+      "dialogue_english": "Everyone talks about global warming, but no one is ready to change!",
+      "context": "Environmental activism with humor",
+      "emotion": "comedy_environmental",
+      "metadata": {
+        "tags": [
+          "global_warming",
+          "environment",
+          "action",
+          "awareness"
+        ]
+      },
+      "dialogue_tanglish": "Global warming pathi ellarum pesraanga, aana yaarum maatha ready illa!"
+    }
+  ]
+}

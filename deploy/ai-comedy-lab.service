@@ -1,0 +1,17 @@
+[Unit]
+Description=AI Comedy Lab Flask Application
+After=network.target postgresql.service
+
+[Service]
+Type=notify
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/ai-comedy-lab
+Environment="PATH=/var/www/ai-comedy-lab/venv/bin"
+EnvironmentFile=/var/www/ai-comedy-lab/.env
+ExecStart=/var/www/ai-comedy-lab/venv/bin/gunicorn --workers 4 --bind 127.0.0.1:5000 'app:create_app()'
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

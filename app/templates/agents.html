@@ -1,0 +1,619 @@
+{% extends "base.html" %}
+
+{% block title %}AI Agents - AI Comedy Lab{% endblock %}
+
+{% block extra_head %}
+<style>
+    /* Agent-specific purple theme */
+    :root {
+        --agent-primary: #9945FF;
+        --agent-secondary: #7014E8;
+        --agent-glow: rgba(153, 69, 255, 0.3);
+    }
+
+    .message-input {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: white;
+        transition: all 0.3s ease;
+    }
+
+    .message-input:focus {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: var(--agent-primary);
+        outline: none;
+        box-shadow: 0 0 0 3px var(--agent-glow);
+    }
+
+    .message-input::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Agent action cards with timeline */
+    .agent-timeline {
+        position: relative;
+        padding-left: 2rem;
+    }
+
+    .agent-timeline::before {
+        content: '';
+        position: absolute;
+        left: 0.5rem;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(180deg, var(--agent-primary), var(--agent-secondary));
+        opacity: 0.3;
+    }
+
+    .agent-action {
+        position: relative;
+        margin-bottom: 1.5rem;
+        opacity: 0;
+        transform: translateX(-20px);
+        animation: slideIn 0.4s ease-out forwards;
+    }
+
+    @keyframes slideIn {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .agent-action::before {
+        content: '';
+        position: absolute;
+        left: -1.75rem;
+        top: 0.75rem;
+        width: 0.75rem;
+        height: 0.75rem;
+        background: var(--agent-primary);
+        border-radius: 50%;
+        box-shadow: 0 0 20px var(--agent-glow);
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.3); opacity: 0.7; }
+    }
+
+    .thinking-card {
+        background: linear-gradient(135deg, rgba(153, 69, 255, 0.15), rgba(112, 20, 232, 0.05));
+        border-left: 4px solid var(--agent-primary);
+        backdrop-filter: blur(10px);
+    }
+
+    .tool-call-card {
+        background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 165, 0, 0.05));
+        border-left: 4px solid #FFD700;
+    }
+
+    .tool-result-card {
+        background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(0, 168, 204, 0.05));
+        border-left: 4px solid #00D9FF;
+    }
+
+    .example-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .example-card:hover {
+        background: rgba(153, 69, 255, 0.1);
+        border-color: var(--agent-primary);
+        transform: translateY(-4px);
+        box-shadow: 0 10px 30px var(--agent-glow);
+    }
+
+    .tool-badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background: rgba(153, 69, 255, 0.2);
+        border: 1px solid rgba(153, 69, 255, 0.4);
+        border-radius: 1rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--agent-primary);
+        font-family: 'Courier New', monospace;
+    }
+
+    .available-tools {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+
+    .tool-card {
+        background: rgba(153, 69, 255, 0.05);
+        border: 1px solid rgba(153, 69, 255, 0.2);
+        border-radius: 1rem;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .tool-card:hover {
+        background: rgba(153, 69, 255, 0.1);
+        border-color: var(--agent-primary);
+        transform: translateY(-2px);
+    }
+
+    /* Hide elements */
+    #agent-actions-container.hidden,
+    #explanation-panel.hidden,
+    #empty-state.hidden {
+        display: none;
+    }
+
+    /* Code-style formatting for parameters */
+    .param-display {
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 0.5rem;
+        padding: 0.75rem;
+        font-family: 'Courier New', monospace;
+        font-size: 0.85rem;
+        color: #00D9FF;
+        margin-top: 0.5rem;
+        overflow-x: auto;
+    }
+
+    /* Loading spinner */
+    .spinner {
+        display: inline-block;
+        width: 1rem;
+        height: 1rem;
+        border: 2px solid rgba(153, 69, 255, 0.3);
+        border-top-color: var(--agent-primary);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div>
+    <!-- Header -->
+    <div class="text-center mb-12 curtain-reveal">
+        <div class="text-8xl mb-6">🤖</div>
+        <h1 class="text-6xl md:text-7xl font-black text-white mb-4 tracking-tight">
+            <span class="gradient-text handwritten text-8xl" style="background: linear-gradient(135deg, #9945FF, #7014E8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                AI Agents
+            </span>
+        </h1>
+        <p class="text-2xl md:text-3xl font-light max-w-3xl mx-auto leading-relaxed mb-6" style="color: #9945FF;">
+            Autonomous Decision-Making Systems
+        </p>
+        <p class="text-lg text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            Watch AI autonomously decide which tools to use and chain multiple actions together
+        </p>
+    </div>
+
+    <!-- How Agents Work -->
+    <div class="stage-container rounded-3xl p-8 mb-8 curtain-reveal" style="animation-delay: 0.1s; border-left: 4px solid #9945FF;">
+        <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+            <span class="text-2xl">💡</span>
+            How AI Agents Work
+        </h3>
+        <ol class="space-y-3 text-gray-300">
+            <li class="flex gap-3">
+                <span class="font-bold" style="color: #9945FF;">1.</span>
+                <span><strong>Analyze:</strong> Agent understands your request and identifies available tools</span>
+            </li>
+            <li class="flex gap-3">
+                <span class="font-bold" style="color: #9945FF;">2.</span>
+                <span><strong>Decide:</strong> Autonomously chooses which tool(s) to call and with what parameters</span>
+            </li>
+            <li class="flex gap-3">
+                <span class="font-bold" style="color: #9945FF;">3.</span>
+                <span><strong>Execute:</strong> Calls selected tools and receives results</span>
+            </li>
+            <li class="flex gap-3">
+                <span class="font-bold" style="color: #9945FF;">4.</span>
+                <span><strong>Synthesize:</strong> Uses tool results to formulate response or make next decision</span>
+            </li>
+        </ol>
+    </div>
+
+    <!-- Available Tools -->
+    <div class="stage-container rounded-3xl p-8 mb-8 curtain-reveal" style="animation-delay: 0.2s;">
+        <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+            <span class="text-2xl">🛠️</span>
+            Agent's Toolbox (5 Tools)
+        </h3>
+        <div class="available-tools">
+            <div class="tool-card">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="text-2xl">🔍</span>
+                    <h4 class="font-bold text-white">search_dialogues</h4>
+                </div>
+                <p class="text-sm text-gray-400 mb-3">
+                    Search by comedian, emotion, or movie
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs px-2 py-1 bg-white/10 rounded">comedian</span>
+                    <span class="text-xs px-2 py-1 bg-white/10 rounded">emotion</span>
+                    <span class="text-xs px-2 py-1 bg-white/10 rounded">movie</span>
+                    <span class="text-xs px-2 py-1 bg-white/10 rounded">limit</span>
+                </div>
+            </div>
+            <div class="tool-card">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="text-2xl">📊</span>
+                    <h4 class="font-bold text-white">get_comedian_stats</h4>
+                </div>
+                <p class="text-sm text-gray-400 mb-3">
+                    Statistics about a comedian
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs px-2 py-1 bg-white/10 rounded">comedian</span>
+                </div>
+            </div>
+            <div class="tool-card">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="text-2xl">🎲</span>
+                    <h4 class="font-bold text-white">get_random_dialogue</h4>
+                </div>
+                <p class="text-sm text-gray-400 mb-3">
+                    Get random funny dialogues
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs px-2 py-1 bg-white/10 rounded">comedian (optional)</span>
+                    <span class="text-xs px-2 py-1 bg-white/10 rounded">count</span>
+                </div>
+            </div>
+            <div class="tool-card">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="text-2xl">⚖️</span>
+                    <h4 class="font-bold text-white">compare_comedians</h4>
+                </div>
+                <p class="text-sm text-gray-400 mb-3">
+                    Compare multiple comedians
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs px-2 py-1 bg-white/10 rounded">comedians (array)</span>
+                </div>
+            </div>
+            <div class="tool-card">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="text-2xl">🎭</span>
+                    <h4 class="font-bold text-white">analyze_emotion_patterns</h4>
+                </div>
+                <p class="text-sm text-gray-400 mb-3">
+                    Emotion distribution analysis
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs px-2 py-1 bg-white/10 rounded">comedian (optional)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Interface -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Chat Area -->
+        <div class="lg:col-span-2 space-y-6">
+            <!-- Chat -->
+            <div class="stage-container rounded-3xl p-8 curtain-reveal" style="animation-delay: 0.3s;">
+                <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                    <span>💬</span>
+                    Ask the Agent
+                </h2>
+
+                <!-- Messages -->
+                <div id="messages-container" class="space-y-4 mb-6"></div>
+
+                <!-- Empty State -->
+                <div id="empty-state" class="text-center py-8 text-gray-500">
+                    <div class="text-4xl mb-3">🎯</div>
+                    <p class="text-sm">Ask a question to watch the agent work autonomously</p>
+                </div>
+
+                <!-- Agent Actions Timeline -->
+                <div id="agent-actions-container" class="hidden mb-6">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <span style="color: #9945FF;">⚡</span>
+                        Agent's Autonomous Actions
+                    </h3>
+                    <div id="agent-actions" class="agent-timeline"></div>
+                </div>
+
+                <!-- Input -->
+                <form id="chat-form">
+                    <textarea
+                        id="user-message"
+                        placeholder="Ask about Tamil comedians, search for dialogues, or request statistics... (Ctrl+Enter to send)"
+                        rows="3"
+                        class="message-input w-full px-6 py-4 rounded-xl mb-4 resize-none"
+                    ></textarea>
+                    <button
+                        type="submit"
+                        id="send-btn"
+                        class="w-full py-4 px-6 rounded-xl font-semibold text-black transition-all"
+                        style="background: linear-gradient(135deg, #9945FF, #7014E8); box-shadow: 0 4px 20px rgba(153, 69, 255, 0.3);">
+                        <span id="send-text">🚀 Let Agent Work Autonomously</span>
+                        <span id="loading-text" class="hidden">
+                            <span class="spinner"></span> Agent is thinking and acting...
+                        </span>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="space-y-6">
+            <!-- Educational Explanation -->
+            <div id="explanation-panel" class="stage-container rounded-3xl p-6 curtain-reveal hidden" style="animation-delay: 0.4s;">
+                <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                    <span>📚</span>
+                    How It Worked
+                </h3>
+                <div id="explanation-steps" class="space-y-3"></div>
+            </div>
+
+            <!-- Info Card -->
+            <div class="stage-container rounded-3xl p-6 curtain-reveal" style="animation-delay: 0.5s;">
+                <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                    <span>ℹ️</span>
+                    What Makes Agents Special?
+                </h3>
+                <div class="text-sm text-gray-300 space-y-3">
+                    <p>
+                        <strong style="color: #9945FF;">Autonomous:</strong> Agent decides what to do, not you
+                    </p>
+                    <p>
+                        <strong style="color: #9945FF;">Tool Use:</strong> Can call functions to get real data
+                    </p>
+                    <p>
+                        <strong style="color: #9945FF;">Multi-step:</strong> Chains multiple actions together
+                    </p>
+                    <p>
+                        <strong style="color: #9945FF;">Adaptive:</strong> Changes strategy based on results
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Examples -->
+    <div class="stage-container rounded-3xl p-8 mt-8 curtain-reveal" style="animation-delay: 0.6s;">
+        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+            <span>💡</span>
+            Try These Examples
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="example-card rounded-2xl p-6" onclick="setExample('How are you saar?')">
+                <div class="text-4xl mb-3">👋</div>
+                <h3 class="font-bold text-white mb-2">Greeting</h3>
+                <p class="text-sm text-gray-400">Agent greets back with random dialogue</p>
+            </div>
+            <div class="example-card rounded-2xl p-6" onclick="setExample('Compare all three comedians')">
+                <div class="text-4xl mb-3">⚖️</div>
+                <h3 class="font-bold text-white mb-2">Compare Comedians</h3>
+                <p class="text-sm text-gray-400">Uses compare_comedians tool</p>
+            </div>
+            <div class="example-card rounded-2xl p-6" onclick="setExample('What emotions are most common?')">
+                <div class="text-4xl mb-3">🎭</div>
+                <h3 class="font-bold text-white mb-2">Emotion Analysis</h3>
+                <p class="text-sm text-gray-400">Analyzes emotion patterns</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let sessionId = null;
+let isLoading = false;
+
+// DOM elements
+const chatForm = document.getElementById('chat-form');
+const userMessage = document.getElementById('user-message');
+const sendBtn = document.getElementById('send-btn');
+const sendText = document.getElementById('send-text');
+const loadingText = document.getElementById('loading-text');
+const messagesContainer = document.getElementById('messages-container');
+const emptyState = document.getElementById('empty-state');
+const agentActionsContainer = document.getElementById('agent-actions-container');
+const agentActions = document.getElementById('agent-actions');
+const explanationPanel = document.getElementById('explanation-panel');
+const explanationSteps = document.getElementById('explanation-steps');
+
+// Set example
+function setExample(text) {
+    userMessage.value = text;
+    userMessage.focus();
+}
+
+// Handle form submission
+chatForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!userMessage.value.trim() || isLoading) return;
+
+    const message = userMessage.value.trim();
+    userMessage.value = '';
+
+    // Hide empty state
+    emptyState.classList.add('hidden');
+
+    addMessage('user', message);
+    setLoading(true);
+
+    // Clear previous agent actions
+    agentActions.innerHTML = '';
+    agentActionsContainer.classList.remove('hidden');
+
+    try {
+        const response = await fetch('/agents/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                message: message,
+                session_id: sessionId
+            })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            sessionId = data.session_id;
+
+            // Show agent actions
+            if (data.agent_actions && data.agent_actions.length > 0) {
+                showAgentActions(data.agent_actions);
+            }
+
+            // Show final response
+            addMessage('assistant', data.response, data.response_time_ms);
+
+            // Show explanation
+            showExplanation(data.educational_explanation);
+        } else {
+            addMessage('error', `Error: ${data.error || 'Unknown error'}`);
+        }
+    } catch (error) {
+        addMessage('error', `Error: ${error.message}`);
+    } finally {
+        setLoading(false);
+    }
+});
+
+// Ctrl+Enter to send
+userMessage.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.key === 'Enter') {
+        chatForm.dispatchEvent(new Event('submit'));
+    }
+});
+
+function setLoading(loading) {
+    isLoading = loading;
+    sendBtn.disabled = loading;
+    if (loading) {
+        sendText.classList.add('hidden');
+        loadingText.classList.remove('hidden');
+    } else {
+        sendText.classList.remove('hidden');
+        loadingText.classList.add('hidden');
+    }
+}
+
+function addMessage(role, content, responseTime) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'message-bubble rounded-2xl px-6 py-4';
+
+    if (role === 'user') {
+        messageDiv.style.background = 'rgba(255, 255, 255, 0.05)';
+        messageDiv.innerHTML = `
+            <div class="text-sm text-gray-400 mb-1">👤 You</div>
+            <div class="text-white">${escapeHtml(content)}</div>
+        `;
+    } else if (role === 'assistant') {
+        messageDiv.style.background = 'rgba(153, 69, 255, 0.1)';
+        messageDiv.style.borderLeft = '4px solid #9945FF';
+        messageDiv.innerHTML = `
+            <div class="text-sm font-semibold mb-1" style="color: #9945FF;">🤖 AI Agent</div>
+            <div class="text-white leading-relaxed">${formatMarkdown(content)}</div>
+            ${responseTime ? `<div class="text-xs text-gray-500 mt-2">Response time: ${responseTime}ms</div>` : ''}
+        `;
+    } else {
+        messageDiv.style.background = 'rgba(255, 107, 157, 0.1)';
+        messageDiv.style.borderLeft = '4px solid #FF6B9D';
+        messageDiv.innerHTML = `
+            <div class="text-sm font-semibold mb-1" style="color: #FF6B9D;">⚠️ Error</div>
+            <div class="text-white">${escapeHtml(content)}</div>
+        `;
+    }
+
+    messagesContainer.appendChild(messageDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+function showAgentActions(actions) {
+    let actionIndex = 0;
+
+    actions.forEach((action, index) => {
+        setTimeout(() => {
+            const actionCard = document.createElement('div');
+            actionCard.className = 'agent-action';
+            actionCard.style.animationDelay = `${index * 0.1}s`;
+
+            if (action.action === 'tool_call') {
+                actionCard.innerHTML = `
+                    <div class="tool-call-card rounded-xl p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-lg">⚙️</span>
+                            <span class="font-semibold text-white">Tool Call:</span>
+                            <span class="tool-badge">${escapeHtml(action.tool)}</span>
+                        </div>
+                        <div class="text-sm text-gray-300 mb-2">
+                            Agent decided to call this tool with parameters:
+                        </div>
+                        <div class="param-display">
+                            ${JSON.stringify(action.arguments, null, 2)}
+                        </div>
+                    </div>
+                `;
+            } else if (action.action === 'tool_result') {
+                actionCard.innerHTML = `
+                    <div class="tool-result-card rounded-xl p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-lg">✅</span>
+                            <span class="font-semibold text-white">Tool Result:</span>
+                            <span class="tool-badge">${escapeHtml(action.tool)}</span>
+                        </div>
+                        <div class="text-sm text-gray-300 mb-2">
+                            ${formatToolResult(action.result)}
+                        </div>
+                    </div>
+                `;
+            }
+
+            agentActions.appendChild(actionCard);
+            agentActions.scrollTop = agentActions.scrollHeight;
+        }, index * 300); // Stagger appearance
+    });
+}
+
+function formatToolResult(result) {
+    if (result.found !== undefined) {
+        return `Found <strong>${result.found}</strong> dialogue(s)`;
+    } else if (result.comedian && result.total_dialogues !== undefined) {
+        return `<strong>${result.comedian}</strong>: ${result.total_dialogues} dialogues, ${result.unique_movies} movies`;
+    } else if (result.count !== undefined && result.dialogues) {
+        return `Retrieved <strong>${result.count}</strong> random dialogue(s)`;
+    } else if (result.comparison) {
+        const comedians = Object.keys(result.comparison);
+        return `Compared <strong>${result.comedians_compared}</strong> comedians: ${comedians.join(', ')}`;
+    } else if (result.emotion_patterns) {
+        const total = result.total_dialogues;
+        const most = result.most_common;
+        return `Analyzed <strong>${total}</strong> dialogues. Most common: <strong>${most}</strong>`;
+    }
+    return JSON.stringify(result);
+}
+
+function showExplanation(explanation) {
+    if (!explanation || !explanation.steps) {
+        explanationPanel.classList.add('hidden');
+        return;
+    }
+
+    explanationPanel.classList.remove('hidden');
+    explanationSteps.innerHTML = explanation.steps.map(step => `
+        <div class="thinking-card rounded-xl p-4 text-sm">
+            <div class="font-semibold mb-1" style="color: #9945FF;">
+                Step ${step.step}: ${escapeHtml(step.title)}
+            </div>
+            <div class="text-gray-300 mt-1">${escapeHtml(step.description)}</div>
+        </div>
+    `).join('');
+}
+
+// Note: escapeHtml() and formatMarkdown() are now in base.html (DRY principle)
+</script>
+{% endblock %}

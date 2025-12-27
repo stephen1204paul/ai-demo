@@ -1,0 +1,26 @@
+# Flask Framework
+Flask>=3.0.0
+Flask-SQLAlchemy>=3.1.1
+Flask-Migrate>=4.0.5
+Flask-CORS>=4.0.0
+
+# Database - use psycopg3 (psycopg2) instead of binary version
+psycopg[binary]>=3.1.0
+pgvector>=0.2.4
+
+# OpenRouter & AI - use latest versions
+openai>=1.58.0
+tiktoken>=0.8.0
+
+# Vector & Embeddings
+numpy>=1.26.0
+
+# Data Processing
+jsonlines>=4.0.0
+
+# Utilities
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# Production
+gunicorn>=21.2.0

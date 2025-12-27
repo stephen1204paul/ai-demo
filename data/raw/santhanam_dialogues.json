@@ -1,0 +1,685 @@
+{
+  "dialogues": [
+    {
+      "comedian": "santhanam",
+      "movie_name": "Boss Engira Bhaskaran",
+      "year": 2010,
+      "character_name": "Nallathambi",
+      "scene_description": "Santhanam's witty take on traffic",
+      "dialogue_tamil": "சென்னை ட்ராஃபிக் என்னோட கார்டியோ",
+      "dialogue_english": "Chennai traffic is my cardio, bro!",
+      "context": "Modern, relatable humor about Chennai traffic jams",
+      "emotion": "comedy_sarcasm",
+      "metadata": {
+        "tags": [
+          "traffic",
+          "modern",
+          "fitness",
+          "sarcasm",
+          "chennai"
+        ]
+      },
+      "dialogue_tanglish": "Chennai traffic ennoda cardio, bro!"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Kanna Laddu Thinna Aasaiya",
+      "year": 2013,
+      "character_name": "Power Star",
+      "scene_description": "Self-aware comedy about movies",
+      "dialogue_tamil": "இதெல்லாம் ரொம்ப over்னு எனக்கே தெரியும்",
+      "dialogue_english": "I know all this is very over, but what to do?",
+      "context": "Meta-humor acknowledging the absurdity of the situation",
+      "emotion": "comedy_self_aware",
+      "metadata": {
+        "tags": [
+          "meta",
+          "self-aware",
+          "modern",
+          "cinema"
+        ]
+      },
+      "dialogue_tanglish": "Idhellam romba over-nu enakkay theriyum, aana enna pandradhu!"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Vanakkam Chennai",
+      "year": 2013,
+      "character_name": "Rosy",
+      "scene_description": "Sarcastic commentary on relationships",
+      "dialogue_tamil": "காதல் என்றால் கஷ்டம்தான்",
+      "dialogue_english": "Love means suffering, that's the universal truth!",
+      "context": "Cynical, humorous take on romantic relationships",
+      "emotion": "comedy_cynical",
+      "metadata": {
+        "tags": [
+          "love",
+          "relationships",
+          "cynical",
+          "truth"
+        ]
+      },
+      "dialogue_tanglish": "Kaadhal-na kashtam dhan, adhu universal truth!"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Theeya Velai Seiyyanum Kumaru",
+      "year": 2013,
+      "character_name": "Arivu",
+      "scene_description": "Quick-witted office humor",
+      "dialogue_tamil": "Office politics-அ விட குடும்ப politics-அ ஈஸி",
+      "dialogue_english": "Family politics is easier than office politics, at least you know your enemies!",
+      "context": "Relatable workplace humor with sharp observations",
+      "emotion": "comedy_observation",
+      "metadata": {
+        "tags": [
+          "office",
+          "politics",
+          "workplace",
+          "relatable"
+        ]
+      },
+      "dialogue_tanglish": "Office politics-a vida kudumba politics easy, atleast unga enemies theriyum!"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Oru Kal Oru Kannadi",
+      "year": 2012,
+      "character_name": "Rajesh",
+      "scene_description": "Confident one-liner about style",
+      "dialogue_tamil": "Style இருந்தா substance இருக்கணும்னு அவசியம் இல்ல",
+      "dialogue_english": "If you have style, substance is optional, bro!",
+      "context": "Confident, cool delivery of witty observation",
+      "emotion": "comedy_confident",
+      "metadata": {
+        "tags": [
+          "style",
+          "confidence",
+          "wit",
+          "modern"
+        ]
+      },
+      "dialogue_tanglish": "Style irundhaa substance irukanumnu avasiyam illa, bro!"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Endrendrum Punnagai",
+      "year": 2013,
+      "character_name": "Jeeva",
+      "scene_description": "Santhanam on social media",
+      "dialogue_tamil": "Facebook-ல எல்லாரும் happy, real life-ல எல்லாரும் tense",
+      "dialogue_english": "On Facebook everyone is happy, in real life everyone is tense!",
+      "context": "Modern observation about social media vs reality",
+      "emotion": "comedy_modern",
+      "metadata": {
+        "tags": [
+          "social_media",
+          "facebook",
+          "reality",
+          "modern"
+        ]
+      },
+      "dialogue_tanglish": "Facebook-la ellarum happy, real life-la ellarum tense!"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Raja Rani",
+      "year": 2013,
+      "character_name": "Sivaji",
+      "scene_description": "Santhanam's dating advice",
+      "dialogue_tamil": "First date-ல coffee shop போனா safe, restaurant போனா commitment",
+      "dialogue_english": "First date at coffee shop is safe, restaurant means commitment, bro!",
+      "context": "Modern dating wisdom with comic logic",
+      "emotion": "comedy_dating",
+      "metadata": {
+        "tags": [
+          "dating",
+          "relationships",
+          "modern",
+          "advice"
+        ]
+      },
+      "dialogue_tanglish": "First date-la coffee shop ponaa safe, restaurant ponaa commitment, bro!"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Settai",
+      "year": 2013,
+      "character_name": "JK",
+      "scene_description": "Santhanam on friendship",
+      "dialogue_tamil": "நண்பன் வீட்ல சாப்பிட்டா அது நட்பு, அவன் பணம் எடுத்தா அது திருட்டு",
+      "dialogue_english": "Eating at friend's house is friendship, taking his money is theft - thin line, bro!",
+      "context": "Cynical but funny take on friendship boundaries",
+      "emotion": "comedy_witty",
+      "metadata": {
+        "tags": [
+          "friendship",
+          "boundaries",
+          "cynical",
+          "witty"
+        ]
+      },
+      "dialogue_tanglish": "Nanbaa veetla saapittaa adhu friendship, avan panam eduththaa adhu theft - thin line, bro!"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Soodhu Kavvum",
+      "year": 2013,
+      "character_name": "Kesavan",
+      "scene_description": "Santhanam's life philosophy",
+      "dialogue_tamil": "நல்லா இருக்கறவன் கஷ்டப்படுவான், கெட்டவன் enjoy பண்ணுவான்",
+      "dialogue_english": "Good people suffer, bad people enjoy - that's the system, bro!",
+      "context": "Dark humor about moral injustice in life",
+      "emotion": "comedy_dark",
+      "metadata": {
+        "tags": [
+          "philosophy",
+          "morality",
+          "cynical",
+          "dark"
+        ]
+      },
+      "dialogue_tanglish": "Nallaa irukkaravaan kashtapaduvaaan, kettavan enjoy pannuvaaan - that's the system, bro!"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Kaavalan",
+      "year": 2011,
+      "character_name": "Amavasai",
+      "scene_description": "Santhanam on movies",
+      "dialogue_tamil": "படத்துல logic தேடறவனுக்கு comedy புரியாது",
+      "dialogue_english": "If you look for logic in movies, you won't enjoy the comedy, bro!",
+      "context": "Meta-humor about cinema and audience expectations",
+      "emotion": "comedy_meta",
+      "metadata": {
+        "tags": [
+          "cinema",
+          "logic",
+          "meta",
+          "fourth_wall"
+        ]
+      },
+      "dialogue_tanglish": "Padathula logic thedaavanukkku comedy puriyaadhu, bro!"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Silambattam",
+      "year": 2008,
+      "character_name": "Sama",
+      "scene_description": "Santhanam on technology",
+      "dialogue_tamil": "Smartphone வந்த பிறகு people smart ஆகல, phone மட்டும் smart ஆச்சு",
+      "dialogue_english": "After smartphones came, people didn't get smart, only the phone got smart!",
+      "context": "Witty observation on technology and intelligence",
+      "emotion": "comedy_ironic",
+      "metadata": {
+        "tags": [
+          "technology",
+          "smartphone",
+          "irony",
+          "modern"
+        ]
+      },
+      "dialogue_tanglish": "Smartphone vandha piragu people smart aagala, phone mattum smart aachu!"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Vaanam",
+      "year": 2011,
+      "character_name": "Tyson",
+      "scene_description": "Santhanam on Chennai life",
+      "dialogue_tamil": "Chennai-ல வாழ்றதுக்கு three முக்கியம்: patience, AC, and more patience",
+      "dialogue_english": "To live in Chennai you need three things: patience, AC, and more patience!",
+      "context": "Relatable humor about Chennai's heat and chaos",
+      "emotion": "comedy_relatable",
+      "metadata": {
+        "tags": [
+          "chennai",
+          "heat",
+          "patience",
+          "city_life"
+        ]
+      },
+      "dialogue_tanglish": "Chennai-la vaazhradhukku three mukkiyam: patience, AC, and more patience!"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Arai En 305-il Kadavul",
+      "year": 2008,
+      "character_name": "Raasu",
+      "scene_description": "Santhanam on room sharing",
+      "dialogue_tamil": "Roommate கிட்ட privacy இருக்காது, ஆனா rent share ஆகும்",
+      "dialogue_english": "With roommate no privacy, but rent is shared - tough choice, bro!",
+      "context": "Modern struggles of city living and compromises",
+      "emotion": "comedy_practical",
+      "metadata": {
+        "tags": [
+          "roommate",
+          "privacy",
+          "rent",
+          "city_life"
+        ]
+      },
+      "dialogue_tanglish": "Roommate kitta privacy irukkaadhu, aana rent share aagum - tough choice, bro!"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Idharkuthane Aasaipattai Balakumara",
+      "year": 2013,
+      "character_name": "Balakumaran",
+      "scene_description": "Santhanam on being broke",
+      "dialogue_tamil": "பணம் இல்லாதவன் பார்த்தா எல்லாமே expensive",
+      "dialogue_english": "When you're broke, even a vada feels expensive, bro!",
+      "context": "Relatable humor about financial struggles",
+      "emotion": "comedy_broke",
+      "metadata": {
+        "tags": [
+          "money",
+          "broke",
+          "relatable",
+          "struggle"
+        ]
+      },
+      "dialogue_tanglish": "Panam illadhavan paarthaa ellamey expensive, bro!"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Osthi",
+      "year": 2011,
+      "character_name": "Velan",
+      "scene_description": "Santhanam's one-liner",
+      "dialogue_tamil": "எல்லாரும் வெற்றி பெறனும்னு சொல்றாங்க, ஆனா competition-ல நான் மட்டும் ஜெயிக்கணும்",
+      "dialogue_english": "Everyone says may the best person win, but actually I should win!",
+      "context": "Honest admission of competitive selfishness",
+      "emotion": "comedy_honest",
+      "metadata": {
+        "tags": [
+          "competition",
+          "honesty",
+          "selfish",
+          "witty"
+        ]
+      },
+      "dialogue_tanglish": "Ellarum success peranumnu solraanga, aana competition-la naan mattum win aaganum!"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Goa",
+      "year": 2010,
+      "character_name": "Aditya",
+      "scene_description": "Santhanam on vacation planning",
+      "dialogue_tamil": "Trip plan பண்ணும் போது எல்லாமே நல்லா இருக்கும், போன பிறகு தான் reality",
+      "dialogue_english": "Planning a trip everything looks good, reality hits only after you go!",
+      "context": "Relatable humor about travel expectations vs reality",
+      "emotion": "comedy_expectation",
+      "metadata": {
+        "tags": [
+          "travel",
+          "vacation",
+          "reality",
+          "expectation"
+        ]
+      },
+      "dialogue_tanglish": "Trip plan pannum podhu ellamey nalla irukkum, pona piragu dhan reality!"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Siruthai",
+      "year": 2011,
+      "character_name": "Rocket",
+      "scene_description": "Santhanam on nicknames",
+      "dialogue_tamil": "பேரு வச்சிருக்காங்க Rocket, ஆனா speed இல்ல",
+      "dialogue_english": "They named me Rocket, but I have no speed - irony at its peak!",
+      "context": "Self-deprecating humor about mismatched nicknames",
+      "emotion": "comedy_self_deprecating",
+      "metadata": {
+        "tags": [
+          "nickname",
+          "irony",
+          "self_deprecating"
+        ]
+      },
+      "dialogue_tanglish": "Peru vechirukkaanga Rocket, aana speed illa - irony at its peak!"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Velayudham",
+      "year": 2011,
+      "character_name": "Speed",
+      "scene_description": "Santhanam on heroism",
+      "dialogue_tamil": "Hero வாறதுக்கு முன்னாடி நானும் ஓடலாம், ஆனா scene வேணுமே",
+      "dialogue_english": "I could run before the hero comes, but then no scene for me, bro!",
+      "context": "Meta-humor about sidekick role in movies",
+      "emotion": "comedy_meta",
+      "metadata": {
+        "tags": [
+          "hero",
+          "sidekick",
+          "meta",
+          "cinema"
+        ]
+      },
+      "dialogue_tanglish": "Hero varadhukku munnaadi naanum odalaam, aana scene venumey, bro!"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Kalakalappu",
+      "year": 2012,
+      "character_name": "Kumar",
+      "scene_description": "Santhanam on cooking",
+      "dialogue_tamil": "சமையல் பண்ண தெரியாதவன் marriage பண்ணிக்கணும்",
+      "dialogue_english": "If you can't cook, get married - simple solution, bro!",
+      "context": "Practical life advice with comedic honesty",
+      "emotion": "comedy_practical",
+      "metadata": {
+        "tags": [
+          "cooking",
+          "marriage",
+          "practical",
+          "advice"
+        ]
+      },
+      "dialogue_tanglish": "Samayal panna theriyaadhavan marriage pannikanum - simple solution, bro!"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Aambala",
+      "year": 2015,
+      "character_name": "Kumar",
+      "scene_description": "Santhanam on gym culture",
+      "dialogue_tamil": "Gym போறவன் photo போடுவான், workout பண்ணலைனாலும் paravala",
+      "dialogue_english": "Gym people will post photos even without workout - it's all about the flex!",
+      "context": "Modern satire on social media fitness culture",
+      "emotion": "comedy_satire",
+      "metadata": {
+        "tags": [
+          "gym",
+          "social_media",
+          "satire",
+          "modern"
+        ]
+      },
+      "dialogue_tanglish": "Gym poravan photo poduvaan, workout pannalainaalum paravala - it's all about the flex!"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Vallavanukku Pullum Aayudham",
+      "year": 2014,
+      "character_name": "Shakthi",
+      "scene_description": "Santhanam on village vs city",
+      "dialogue_tamil": "ஊர்ல respect, சென்னைல competition",
+      "dialogue_english": "In village you get respect, in Chennai it's all competition!",
+      "context": "Contrast between rural values and urban reality",
+      "emotion": "comedy_contrast",
+      "metadata": {
+        "tags": [
+          "village",
+          "city",
+          "respect",
+          "competition"
+        ]
+      },
+      "dialogue_tanglish": "Ooru-la respect, Chennai-la competition!"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Sakka Podu Podu Raja",
+      "year": 2017,
+      "character_name": "Santa",
+      "scene_description": "Santhanam on online shopping",
+      "dialogue_tamil": "Online shopping-ல photo வேற மாதிரி, delivery வேற மாதிரி",
+      "dialogue_english": "Online shopping: photo shows one thing, delivery brings something else!",
+      "context": "Modern e-commerce frustrations with humor",
+      "emotion": "comedy_modern",
+      "metadata": {
+        "tags": [
+          "shopping",
+          "online",
+          "expectations",
+          "modern"
+        ]
+      },
+      "dialogue_tanglish": "Online shopping-la photo vera madhiri, delivery vera madhiri!"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Server Sundaram",
+      "year": 2019,
+      "character_name": "Sundaram",
+      "scene_description": "Santhanam on customer service",
+      "dialogue_tamil": "Customer எப்பவும் right-னு சொல்றாங்க, ஆனா customer எப்பவும் confusing",
+      "dialogue_english": "They say customer is always right, but customer is always confusing!",
+      "context": "Workplace humor about difficult customers",
+      "emotion": "comedy_workplace",
+      "metadata": {
+        "tags": [
+          "customer_service",
+          "work",
+          "confusion",
+          "relatable"
+        ]
+      },
+      "dialogue_tanglish": "Customer eppavum right-nu solraanga, aana customer eppavum confusing!"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Boss Engira Bhaskaran",
+      "year": 2010,
+      "character_name": "Nallathambi",
+      "scene_description": "Humorous lament about having only one friend.",
+      "dialogue_tamil": "",
+      "dialogue_english": "Those who have ten to fifteen friends in town are happy... The plight I'm in with just one friend... Oh my oh my oh my...!",
+      "context": "Humorous lament about having only one friend.",
+      "emotion": "comedy_lament",
+      "metadata": {
+        "tags": [
+          "santhanam",
+          "famous",
+          "friendship"
+        ]
+      },
+      "dialogue_tanglish": "Oorla Paththu Pathinanji Friend Vachirukavan Ellam Santhosama Irukan....Ore Oru Frienda Vachikittu Nan Padra Avastha Iruke.....Ayu Ayu Ayu..Uu.."
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Siva Manasula Sakthi",
+      "year": 2009,
+      "character_name": "Santhanam",
+      "scene_description": "Trying to understand women, then giving up and asking for a drink.",
+      "dialogue_tamil": "",
+      "dialogue_english": "Every girl has a different feeling, machi... Get me a quarter (bottle of alcohol)...",
+      "context": "Trying to understand women, then giving up and asking for a drink.",
+      "emotion": "comedy_frustration",
+      "metadata": {
+        "tags": [
+          "santhanam",
+          "famous",
+          "relationships",
+          "alcohol"
+        ]
+      },
+      "dialogue_tanglish": "Ovvoru Ponnukkum Ovvoru Feeling Machi... Oru Quarter Sollaen..."
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Madha Gaja Raja",
+      "year": 2023,
+      "character_name": "Santhanam",
+      "scene_description": "Comparing two different places/experiences.",
+      "dialogue_tamil": "",
+      "dialogue_english": "Today Sathyam Theatre is a cool place, bustling. Tomorrow Mahabalipuram is a hot place, also bustling.",
+      "context": "Comparing two different places/experiences.",
+      "emotion": "comedy_observation",
+      "metadata": {
+        "tags": [
+          "santhanam",
+          "famous",
+          "travel",
+          "places"
+        ]
+      },
+      "dialogue_tanglish": "Today Sathyam Theatre Cool Place Gaja Gaja . . Tomorrow Hot Place Mahapalipuram Ah Gaja Gaja . ."
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Siva Manasula Sakthi",
+      "year": 2009,
+      "character_name": "Santhanam",
+      "scene_description": "A statement about the delayed impact of good intentions or words.",
+      "dialogue_tamil": "",
+      "dialogue_english": "Good people's dialogues will reach... but it will be a little late!!",
+      "context": "A statement about the delayed impact of good intentions or words.",
+      "emotion": "comedy_sarcasm",
+      "metadata": {
+        "tags": [
+          "santhanam",
+          "famous",
+          "life_lesson"
+        ]
+      },
+      "dialogue_tanglish": "Nallavanga Dialogue Reach Agum.. Aana Konjam Late Agum!!"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Boss Engira Bhaskaran",
+      "year": 2010,
+      "character_name": "Nallathambi",
+      "scene_description": "Humorous demand for borrowed money.",
+      "dialogue_tamil": "",
+      "dialogue_english": "You borrowed money for beer yesterday, first give that back.",
+      "context": "Humorous demand for borrowed money.",
+      "emotion": "comedy_demand",
+      "metadata": {
+        "tags": [
+          "santhanam",
+          "famous",
+          "money",
+          "beer"
+        ]
+      },
+      "dialogue_tanglish": "Nethu Beer Adika Kasu Vanginiyae Atha Mothala Thirupi Kodu."
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Dhilluku Dhuddu",
+      "year": 2016,
+      "character_name": "Santhanam",
+      "scene_description": "Sarcastic comment about someone's unsuccessful love life.",
+      "dialogue_tamil": "",
+      "dialogue_english": "It's fine if you go and propose love. You are just going to watch the explosion (of rejection).",
+      "context": "Sarcastic comment about someone's unsuccessful love life.",
+      "emotion": "comedy_sarcasm",
+      "metadata": {
+        "tags": [
+          "santhanam",
+          "famous",
+          "love",
+          "rejection"
+        ]
+      },
+      "dialogue_tanglish": "Nee Poi Love Sonna Paravala.Neeye Vedikathan Paka Pora"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Dhilluku Dhuddu",
+      "year": 2016,
+      "character_name": "Santhanam",
+      "scene_description": "Humorous generalization about the unreliability of words from drunkards and women.",
+      "dialogue_tamil": "",
+      "dialogue_english": "A drunkard's words are gone by morning... A woman's words are gone as soon as they are said.",
+      "context": "Humorous generalization about the unreliability of words from drunkards and women.",
+      "emotion": "comedy_cynical",
+      "metadata": {
+        "tags": [
+          "santhanam",
+          "famous",
+          "relationships",
+          "observation"
+        ]
+      },
+      "dialogue_tanglish": "Kudigaaran Pechi Vidinja Dhaa Pochi.. Ponunga Pechi Sonna Odanae Pochi"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Siva Manasula Sakthi",
+      "year": 2009,
+      "character_name": "Santhanam",
+      "scene_description": "A rhyming request for drinks and snacks.",
+      "dialogue_tamil": "",
+      "dialogue_english": "Stop stop, come running... bring a quarter bottle of liquor, Chicken 65 by weight... pour two pegs, one for us... another peg for Sakthi Aunty...",
+      "context": "A rhyming request for drinks and snacks.",
+      "emotion": "comedy_celebratory",
+      "metadata": {
+        "tags": [
+          "santhanam",
+          "famous",
+          "rhymes",
+          "alcohol",
+          "food"
+        ]
+      },
+      "dialogue_tanglish": "Nilla Nilla Odi Va......Quater Saraku Konduva Chicken 65 Weightu..Rendu Pegu Oothu Oru Pegu Engaluku......Innoru Pegu Sakthi Auntyku......"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Siva Manasula Sakthi",
+      "year": 2009,
+      "character_name": "Santhanam",
+      "scene_description": "Sarcastic retort to being judged for unemployment.",
+      "dialogue_tamil": "",
+      "dialogue_english": "Just because I didn't study or go to work, why do you all look down on me? Are you the owner of Docomo Company or what?",
+      "context": "Sarcastic retort to being judged for unemployment.",
+      "emotion": "comedy_sarcasm",
+      "metadata": {
+        "tags": [
+          "santhanam",
+          "famous",
+          "unemployment",
+          "sarcasm"
+        ]
+      },
+      "dialogue_tanglish": "Naan Padikalae Vaelaiku Pogalaenu Unagaluku Ellam Enna Kanda Kevalama Irukula Pinna Docomo Company Owner Ah Nee ?"
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Raja Rani",
+      "year": 2013,
+      "character_name": "Santhanam",
+      "scene_description": "Emotional confession to a friend during a tense moment, seeking solace in beer.",
+      "dialogue_tamil": "",
+      "dialogue_english": "There's a lot of tension... Let's go have a beer... Dai, Chandrika didn't understand me as much as you did... You are my friend, da...",
+      "context": "Emotional confession to a friend during a tense moment, seeking solace in beer.",
+      "emotion": "comedy_emotional",
+      "metadata": {
+        "tags": [
+          "santhanam",
+          "famous",
+          "friendship",
+          "emotion",
+          "alcohol"
+        ]
+      },
+      "dialogue_tanglish": "Paynakara Tension A Irrukuta.....Vada Poyi Oru Beeru Sapitalam.....Dai Nee Ennai Purinjikita Alavu Koda Chandrika Ennai Purinjikalaiya Da..........Ne En Nanbean Da....."
+    },
+    {
+      "comedian": "santhanam",
+      "movie_name": "Boss Engira Bhaskaran",
+      "year": 2010,
+      "character_name": "Nallathambi",
+      "scene_description": "Humorous description of a character, highlighting a quirky food habit despite a serious profession.",
+      "dialogue_tamil": "",
+      "dialogue_english": "What does Sir do? Sir works as an English Professor in college... He only eats Pizza, Burger.",
+      "context": "Humorous description of a character, highlighting a quirky food habit despite a serious profession.",
+      "emotion": "comedy_ironic",
+      "metadata": {
+        "tags": [
+          "santhanam",
+          "famous",
+          "professor",
+          "food",
+          "irony"
+        ]
+      },
+      "dialogue_tanglish": "Sir Enna Panraru? Saaru College'la English Professor'a Vela Seiraru.... Only Pizza, Burger Dhaan Saapuduvaru"
+    }
+  ]
+}

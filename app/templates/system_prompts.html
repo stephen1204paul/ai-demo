@@ -1,0 +1,601 @@
+{% extends "base.html" %}
+
+{% block title %}System Prompts - AI Comedy Lab{% endblock %}
+
+{% block extra_head %}
+<style>
+    :root {
+        --spotlight-vadivelu: #FFD700;
+        --spotlight-santhanam: #00D9FF;
+        --spotlight-vivek: #FF6B9D;
+    }
+
+    .spotlight-card {
+        position: relative;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    .spotlight-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, var(--spotlight-color) 0%, transparent 70%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+    }
+
+    .spotlight-card:hover::before {
+        opacity: 0.15;
+        animation: spotlight-pulse 2s ease-in-out infinite;
+    }
+
+    .spotlight-card.active {
+        transform: translateY(-8px) scale(1.02);
+        border-color: var(--spotlight-color);
+        box-shadow: 0 0 40px rgba(var(--spotlight-rgb), 0.4),
+                    0 20px 40px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    .spotlight-card.active::before {
+        opacity: 0.25;
+    }
+
+    @keyframes spotlight-pulse {
+        0%, 100% { opacity: 0.15; }
+        50% { opacity: 0.25; }
+    }
+
+
+    .chat-message {
+        animation: message-appear 0.4s ease-out;
+    }
+
+    @keyframes message-appear {
+        from {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+
+    .message-bubble {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        position: relative;
+    }
+
+    .message-bubble::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.03));
+        pointer-events: none;
+        border-radius: inherit;
+    }
+
+    .btn-spotlight {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .btn-spotlight::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+
+    .btn-spotlight:hover::before {
+        width: 300px;
+        height: 300px;
+    }
+
+    .comparison-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .loading-stage {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(255, 255, 255, 0.1);
+        border-top-color: var(--spotlight-color);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+    .educational-panel {
+        background: linear-gradient(135deg, rgba(30, 30, 50, 0.6), rgba(20, 20, 40, 0.8));
+        border-left: 4px solid var(--spotlight-color);
+        backdrop-filter: blur(20px);
+    }
+
+    .step-indicator {
+        background: var(--spotlight-color);
+        box-shadow: 0 0 20px rgba(var(--spotlight-rgb), 0.5);
+    }
+
+    /* Hide elements (without !important to allow Tailwind responsive classes) */
+    #empty-state.hidden,
+    #messages-container.hidden,
+    #educational-panel.hidden,
+    #system-prompt-panel.hidden,
+    #comparison-section.hidden {
+        display: none;
+    }
+
+    /* Note: Markdown formatting styles are now in base.html (DRY principle) */
+</style>
+{% endblock %}
+
+{% block content %}
+<div>
+    <!-- Header -->
+    <div class="text-center mb-12 curtain-reveal">
+        <h1 class="text-6xl md:text-7xl font-black text-white mb-4 tracking-tight">
+            <span class="gradient-text handwritten text-8xl">System Prompts</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-300 font-light max-w-3xl mx-auto leading-relaxed">
+            Watch AI transform its personality through the power of prompt engineering
+        </p>
+        <div class="mt-6 flex items-center justify-center gap-3 text-sm text-gray-400">
+            <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-full" style="background: var(--spotlight-vadivelu);"></div>
+                <span>Vadivelu</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-full" style="background: var(--spotlight-santhanam);"></div>
+                <span>Santhanam</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-full" style="background: var(--spotlight-vivek);"></div>
+                <span>Vivek</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comedian Selection Stage -->
+    <div class="stage-container rounded-3xl p-8 mb-8 curtain-reveal" style="animation-delay: 0.1s;">
+        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+            <span class="text-4xl">🎭</span>
+            Choose Your Comedian
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="comedian-selection">
+            <div class="spotlight-card stage-container rounded-2xl p-6 border-2"
+                 data-comedian="vadivelu"
+                 style="--spotlight-color: #FFD700; --spotlight-rgb: 255, 215, 0; border-color: rgba(255,255,255,0.1)">
+                <div class="text-5xl mb-4">😄</div>
+                <h3 class="text-2xl font-bold text-white mb-2">Vadivelu</h3>
+                <p class="text-gray-400 text-sm mb-4 leading-relaxed">Legendary physical comedy and innocent confusion</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 rounded-full text-xs font-medium" style="background: #FFD70020; color: #FFD700; border: 1px solid #FFD70040">Exaggerated</span>
+                    <span class="px-3 py-1 rounded-full text-xs font-medium" style="background: #FFD70020; color: #FFD700; border: 1px solid #FFD70040">Self-deprecating</span>
+                    <span class="px-3 py-1 rounded-full text-xs font-medium" style="background: #FFD70020; color: #FFD700; border: 1px solid #FFD70040">Catchphrases</span>
+                </div>
+            </div>
+
+            <div class="spotlight-card stage-container rounded-2xl p-6 border-2"
+                 data-comedian="santhanam"
+                 style="--spotlight-color: #00D9FF; --spotlight-rgb: 0, 217, 255; border-color: rgba(255,255,255,0.1)">
+                <div class="text-5xl mb-4">😎</div>
+                <h3 class="text-2xl font-bold text-white mb-2">Santhanam</h3>
+                <p class="text-gray-400 text-sm mb-4 leading-relaxed">Quick-witted modern comedy with perfect timing</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 rounded-full text-xs font-medium" style="background: #00D9FF20; color: #00D9FF; border: 1px solid #00D9FF40">One-liners</span>
+                    <span class="px-3 py-1 rounded-full text-xs font-medium" style="background: #00D9FF20; color: #00D9FF; border: 1px solid #00D9FF40">Wordplay</span>
+                    <span class="px-3 py-1 rounded-full text-xs font-medium" style="background: #00D9FF20; color: #00D9FF; border: 1px solid #00D9FF40">Meta-humor</span>
+                </div>
+            </div>
+
+            <div class="spotlight-card stage-container rounded-2xl p-6 border-2"
+                 data-comedian="vivek"
+                 style="--spotlight-color: #FF6B9D; --spotlight-rgb: 255, 107, 157; border-color: rgba(255,255,255,0.1)">
+                <div class="text-5xl mb-4">🎓</div>
+                <h3 class="text-2xl font-bold text-white mb-2">Vivek</h3>
+                <p class="text-gray-400 text-sm mb-4 leading-relaxed">Intellectual humor with social commentary</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 rounded-full text-xs font-medium" style="background: #FF6B9D20; color: #FF6B9D; border: 1px solid #FF6B9D40">Thoughtful</span>
+                    <span class="px-3 py-1 rounded-full text-xs font-medium" style="background: #FF6B9D20; color: #FF6B9D; border: 1px solid #FF6B9D40">Educational</span>
+                    <span class="px-3 py-1 rounded-full text-xs font-medium" style="background: #FF6B9D20; color: #FF6B9D; border: 1px solid #FF6B9D40">Cultural</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Interface -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Chat Area -->
+        <div class="lg:col-span-2 space-y-6">
+            <!-- Messages -->
+            <div class="stage-container rounded-3xl p-8 min-h-[400px] max-h-[600px] overflow-y-auto curtain-reveal" style="animation-delay: 0.2s;">
+                <div id="empty-state" class="flex flex-col items-center justify-center h-full text-center py-12">
+                    <div class="text-6xl mb-6">🎬</div>
+                    <h3 class="text-2xl font-bold text-white mb-3">The Stage Awaits</h3>
+                    <p class="text-gray-400 max-w-md">
+                        Select a comedian and start a conversation to see how system prompts shape AI personality
+                    </p>
+                </div>
+
+                <div id="messages-container" class="space-y-4 hidden"></div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="stage-container rounded-3xl p-6 curtain-reveal" style="animation-delay: 0.3s;">
+                <form id="chat-form">
+                    <div class="flex gap-4">
+                        <input
+                            type="text"
+                            id="user-input"
+                            placeholder="Ask anything..."
+                            disabled
+                            class="flex-1 bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-white/30 focus:bg-white/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                        />
+                        <button
+                            type="submit"
+                            id="send-btn"
+                            disabled
+                            class="btn-spotlight px-8 py-4 rounded-xl font-semibold text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                            style="background: #4B5563"
+                        >
+                            Send
+                        </button>
+                    </div>
+                    <div class="mt-4 flex gap-3">
+                        <button
+                            type="button"
+                            id="compare-btn"
+                            disabled
+                            class="btn-spotlight px-6 py-2 rounded-lg text-sm font-medium text-white bg-white/10 border border-white/20 hover:bg-white/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            🎪 Compare All
+                        </button>
+                        <button
+                            type="button"
+                            id="clear-btn"
+                            class="px-6 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-white/10 transition-all"
+                        >
+                            Clear
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Educational Panel -->
+        <div class="space-y-6">
+            <div id="educational-panel" class="educational-panel rounded-3xl p-6 curtain-reveal hidden"
+                 style="animation-delay: 0.4s; --spotlight-color: var(--spotlight-vadivelu); --spotlight-rgb: 255, 215, 0">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <span>📚</span>
+                    How It Works
+                </h3>
+                <div id="educational-content"></div>
+            </div>
+
+            <!-- System Prompt Preview -->
+            <div id="system-prompt-panel" class="educational-panel rounded-3xl p-6 curtain-reveal hidden"
+                 style="animation-delay: 0.5s; --spotlight-color: var(--spotlight-santhanam); --spotlight-rgb: 0, 217, 255">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <span>🎯</span>
+                    Active System Prompt
+                </h3>
+                <div class="bg-black/30 rounded-xl p-4 font-mono text-xs text-gray-300 leading-relaxed overflow-auto max-h-64">
+                    <pre id="system-prompt-text"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comparison Results -->
+    <div id="comparison-section" class="mt-8 curtain-reveal hidden" style="animation-delay: 0.6s;">
+        <div class="stage-container rounded-3xl p-8">
+            <h2 class="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+                <span class="text-4xl">🎪</span>
+                Personality Comparison
+            </h2>
+            <p class="text-gray-400 mb-6">Same question, three unique personalities:</p>
+            <div id="comparison-results" class="comparison-grid"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+const COMEDIANS = {
+    vadivelu: { name: 'Vadivelu', emoji: '😄', color: '#FFD700' },
+    santhanam: { name: 'Santhanam', emoji: '😎', color: '#00D9FF' },
+    vivek: { name: 'Vivek', emoji: '🎓', color: '#FF6B9D' }
+};
+
+let selectedComedian = null;
+let isLoading = false;
+let sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+
+// DOM elements
+const comedianCards = document.querySelectorAll('.spotlight-card');
+const userInput = document.getElementById('user-input');
+const sendBtn = document.getElementById('send-btn');
+const compareBtn = document.getElementById('compare-btn');
+const clearBtn = document.getElementById('clear-btn');
+const chatForm = document.getElementById('chat-form');
+const emptyState = document.getElementById('empty-state');
+const messagesContainer = document.getElementById('messages-container');
+const educationalPanel = document.getElementById('educational-panel');
+const systemPromptPanel = document.getElementById('system-prompt-panel');
+const comparisonSection = document.getElementById('comparison-section');
+
+// Comedian selection
+comedianCards.forEach(card => {
+    card.addEventListener('click', () => {
+        const comedian = card.dataset.comedian;
+        selectComedian(comedian);
+    });
+});
+
+function selectComedian(comedian) {
+    selectedComedian = comedian;
+    comparisonSection.classList.add('hidden');
+
+    // Update UI
+    comedianCards.forEach(card => {
+        if (card.dataset.comedian === comedian) {
+            card.classList.add('active');
+            const color = COMEDIANS[comedian].color;
+            card.style.borderColor = color;
+        } else {
+            card.classList.remove('active');
+            card.style.borderColor = 'rgba(255,255,255,0.1)';
+        }
+    });
+
+    // Enable inputs
+    userInput.disabled = false;
+    updateButtonStates();
+}
+
+function updateButtonStates() {
+    const hasInput = userInput.value.trim().length > 0;
+    sendBtn.disabled = !selectedComedian || isLoading || !hasInput;
+    compareBtn.disabled = isLoading || !hasInput;
+
+    if (selectedComedian) {
+        sendBtn.style.background = COMEDIANS[selectedComedian].color;
+    }
+}
+
+userInput.addEventListener('input', updateButtonStates);
+
+// Chat form submission
+chatForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!userInput.value.trim() || !selectedComedian || isLoading) return;
+
+    const message = userInput.value.trim();
+    userInput.value = '';
+    comparisonSection.classList.add('hidden');
+    updateButtonStates();
+
+    addUserMessage(message);
+    setLoading(true);
+
+    try {
+        const response = await fetch('/system-prompts/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                message: message,
+                comedian: selectedComedian,
+                session_id: sessionId
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.error) {
+            throw new Error(data.error);
+        }
+
+        addAIMessage(data.response, data.response_time_ms);
+        showEducationalInfo(data.educational_explanation, data.system_prompt);
+
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error: ' + error.message);
+    } finally {
+        setLoading(false);
+        updateButtonStates();
+    }
+});
+
+// Compare all comedians
+compareBtn.addEventListener('click', async () => {
+    if (!userInput.value.trim() || isLoading) return;
+
+    const message = userInput.value.trim();
+    setLoading(true);
+
+    try {
+        const response = await fetch('/system-prompts/compare', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: message })
+        });
+
+        const data = await response.json();
+
+        if (data.error) {
+            throw new Error(data.error);
+        }
+
+        showComparison(data.comparisons);
+
+        setTimeout(() => {
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth'
+            });
+        }, 100);
+
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error: ' + error.message);
+    } finally {
+        setLoading(false);
+        updateButtonStates();
+    }
+});
+
+// Clear chat
+clearBtn.addEventListener('click', () => {
+    messagesContainer.innerHTML = '';
+    messagesContainer.classList.add('hidden');
+    emptyState.classList.remove('hidden');
+    educationalPanel.classList.add('hidden');
+    systemPromptPanel.classList.add('hidden');
+    comparisonSection.classList.add('hidden');
+    sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+});
+
+function setLoading(loading) {
+    isLoading = loading;
+    if (loading) {
+        const color = COMEDIANS[selectedComedian].color;
+        messagesContainer.innerHTML += `
+            <div class="flex justify-start" id="loading-indicator">
+                <div class="message-bubble rounded-2xl px-6 py-4">
+                    <div class="flex items-center gap-3">
+                        <div class="loading-stage" style="--spotlight-color: ${color}"></div>
+                        <span class="text-gray-400 text-sm">Performing...</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    } else {
+        const loadingEl = document.getElementById('loading-indicator');
+        if (loadingEl) loadingEl.remove();
+    }
+}
+
+function addUserMessage(message) {
+    emptyState.classList.add('hidden');
+    messagesContainer.classList.remove('hidden');
+
+    const messageEl = document.createElement('div');
+    messageEl.className = 'chat-message flex justify-end mb-4';
+    messageEl.innerHTML = `
+        <div class="message-bubble rounded-2xl px-6 py-4 max-w-[80%]">
+            <div class="text-sm text-gray-400 mb-1">You</div>
+            <div class="text-white">${escapeHtml(message)}</div>
+        </div>
+    `;
+    messagesContainer.appendChild(messageEl);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+function addAIMessage(message, responseTime) {
+    const comedian = COMEDIANS[selectedComedian];
+
+    const messageEl = document.createElement('div');
+    messageEl.className = 'chat-message flex justify-start mb-4';
+    messageEl.innerHTML = `
+        <div class="message-bubble rounded-2xl px-6 py-4 max-w-[80%]" style="border-left: 4px solid ${comedian.color}">
+            <div class="flex items-center gap-2 mb-2">
+                <span>${comedian.emoji}</span>
+                <span class="text-sm font-semibold" style="color: ${comedian.color}">${comedian.name}</span>
+            </div>
+            <div class="text-white leading-relaxed">${formatMarkdown(message)}</div>
+            <div class="text-xs text-gray-500 mt-2">${responseTime}ms</div>
+        </div>
+    `;
+    messagesContainer.appendChild(messageEl);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+function showEducationalInfo(explanation, systemPrompt) {
+    educationalPanel.classList.remove('hidden');
+    systemPromptPanel.classList.remove('hidden');
+
+    let stepsHtml = '';
+    explanation.steps.forEach(step => {
+        stepsHtml += `
+            <div class="flex gap-4 mb-4">
+                <div class="step-indicator flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-black">
+                    ${step.step}
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-1">${step.title}</h4>
+                    <p class="text-sm text-gray-400 leading-relaxed">${step.description}</p>
+                </div>
+            </div>
+        `;
+    });
+
+    document.getElementById('educational-content').innerHTML = `
+        ${stepsHtml}
+        <div class="mt-6 pt-6 border-t border-white/10">
+            <h4 class="font-semibold text-white mb-2">💡 Why System Prompts?</h4>
+            <p class="text-sm text-gray-300 leading-relaxed">${explanation.why_system_prompts}</p>
+        </div>
+    `;
+
+    document.getElementById('system-prompt-text').textContent = systemPrompt;
+}
+
+function showComparison(comparisons) {
+    comparisonSection.classList.remove('hidden');
+
+    let html = '';
+    comparisons.forEach(result => {
+        const comedian = COMEDIANS[result.comedian];
+        html += `
+            <div class="message-bubble rounded-2xl p-6" style="border-left: 4px solid ${comedian.color}">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-3xl">${comedian.emoji}</span>
+                    <h3 class="text-xl font-bold" style="color: ${comedian.color}">${comedian.name}</h3>
+                </div>
+                <div class="text-white leading-relaxed mb-4">${formatMarkdown(result.response)}</div>
+                <details class="mt-4">
+                    <summary class="text-sm text-gray-400 cursor-pointer hover:text-white transition-colors">
+                        View System Prompt
+                    </summary>
+                    <div class="mt-2 bg-black/30 rounded-lg p-3 font-mono text-xs text-gray-400">
+                        <pre>${escapeHtml(result.system_prompt)}</pre>
+                    </div>
+                </details>
+            </div>
+        `;
+    });
+
+    document.getElementById('comparison-results').innerHTML = html;
+}
+
+// Note: escapeHtml() and formatMarkdown() are now in base.html (DRY principle)
+</script>
+{% endblock %}

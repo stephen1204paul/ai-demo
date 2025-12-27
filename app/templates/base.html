@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}AI Comedy Lab{% endblock %}</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Highlight.js for code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <style>
+        :root {
+            --spotlight-primary: #FFD700;
+            --spotlight-secondary: #00D9FF;
+            --spotlight-tertiary: #FF6B9D;
+            --stage-dark: #0a0a12;
+            --stage-darker: #1a1a2e;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--stage-dark) 0%, var(--stage-darker) 100%);
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        .handwritten {
+            font-family: 'Covered By Your Grace', cursive;
+        }
+
+        .stage-lights {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.2;
+        }
+
+        .stage-light {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            filter: blur(120px);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .stage-light:nth-child(1) {
+            background: radial-gradient(circle, var(--spotlight-primary), transparent);
+            top: -200px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .stage-light:nth-child(2) {
+            background: radial-gradient(circle, var(--spotlight-secondary), transparent);
+            top: -150px;
+            right: -100px;
+            animation-delay: 3s;
+        }
+
+        .stage-light:nth-child(3) {
+            background: radial-gradient(circle, var(--spotlight-tertiary), transparent);
+            bottom: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(30px, 30px); }
+            66% { transform: translate(-20px, 20px); }
+        }
+
+        /* Navigation Styles */
+        .nav-glass {
+            background: rgba(10, 10, 18, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.75rem;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--spotlight-primary), var(--spotlight-secondary));
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-link:hover::before {
+            width: 80%;
+        }
+
+        .nav-link.active {
+            background: rgba(255, 215, 0, 0.1);
+            color: var(--spotlight-primary);
+        }
+
+        .nav-link.active::before {
+            width: 80%;
+        }
+
+        /* Stage Container */
+        .stage-container {
+            background: radial-gradient(ellipse at center, rgba(30, 30, 50, 0.6), rgba(10, 10, 18, 0.8));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8),
+                        inset 0 0 60px rgba(255, 255, 255, 0.02);
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--spotlight-primary), #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 215, 0, 0.3);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 215, 0, 0.5);
+        }
+
+        /* Footer */
+        .stage-footer {
+            background: rgba(10, 10, 18, 0.9);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Animations */
+        @keyframes curtain-reveal {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .curtain-reveal {
+            animation: curtain-reveal 0.6s ease-out;
+        }
+
+        /* Mobile menu toggle */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .mobile-menu.open {
+            max-height: 400px;
+        }
+
+        /* Markdown formatting styles (shared across pages) */
+        .message-bubble strong {
+            font-weight: 700;
+            color: rgba(255, 215, 0, 0.95);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .message-bubble em {
+            font-style: italic;
+            color: rgba(200, 200, 255, 0.9);
+            opacity: 0.85;
+        }
+    </style>
+
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <!-- Stage Lights Background -->
+    <div class="stage-lights">
+        <div class="stage-light"></div>
+        <div class="stage-light"></div>
+        <div class="stage-light"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-glass relative z-20">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-20">
+                <a href="/" class="flex items-center gap-3 group">
+                    <span class="text-5xl transition-transform group-hover:scale-110">🎭</span>
+                    <div>
+                        <div class="text-2xl font-black gradient-text">AI Comedy Lab</div>
+                        <div class="text-xs text-gray-400 font-light">Learn AI Through Tamil Cinema</div>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-2">
+                    <a href="/" class="nav-link text-white">
+                        <span class="mr-2">🏠</span>Dashboard
+                    </a>
+                    <a href="/rag" class="nav-link text-white">
+                        <span class="mr-2">🔍</span>RAG
+                    </a>
+                    <a href="/system-prompts" class="nav-link text-white">
+                        <span class="mr-2">🎭</span>System Prompts
+                    </a>
+                    <a href="/fine-tuning" class="nav-link text-white">
+                        <span class="mr-2">⚙️</span>Fine-Tuning
+                    </a>
+                    <a href="/agents" class="nav-link text-white">
+                        <span class="mr-2">🤖</span>Agents
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu md:hidden">
+                <div class="py-4 space-y-2">
+                    <a href="/" class="nav-link text-white block">
+                        <span class="mr-2">🏠</span>Dashboard
+                    </a>
+                    <a href="/rag" class="nav-link text-white block">
+                        <span class="mr-2">🔍</span>RAG
+                    </a>
+                    <a href="/system-prompts" class="nav-link text-white block">
+                        <span class="mr-2">🎭</span>System Prompts
+                    </a>
+                    <a href="/fine-tuning" class="nav-link text-white block">
+                        <span class="mr-2">⚙️</span>Fine-Tuning
+                    </a>
+                    <a href="/agents" class="nav-link text-white block">
+                        <span class="mr-2">🤖</span>Agents
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative z-10 container mx-auto px-4 py-8">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="stage-footer relative z-10 mt-20">
+        <div class="container mx-auto px-4 py-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center gap-2 mb-3">
+                    <span class="text-3xl">🎬</span>
+                    <h3 class="text-xl font-bold gradient-text">AI Comedy Lab</h3>
+                </div>
+                <p class="text-sm text-gray-400 mb-2">
+                    Learn AI concepts through the humor of Tamil cinema legends
+                </p>
+                <p class="text-xs text-gray-500">
+                    Featuring Vadivelu • Santhanam • Vivek
+                </p>
+                <div class="mt-4 pt-4 border-t border-white/10">
+                    <p class="text-xs text-gray-600">
+                        Built with Flask, PostgreSQL, and OpenRouter • Educational Platform
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize highlight.js -->
+    <script>
+        if (typeof hljs !== 'undefined') {
+            hljs.highlightAll();
+        }
+    </script>
+
+    <!-- Mobile Menu Toggle -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('open');
+            });
+        }
+
+        // Highlight active nav link
+        const currentPath = window.location.pathname;
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (link.getAttribute('href') === currentPath ||
+                (currentPath !== '/' && link.getAttribute('href') !== '/' && currentPath.startsWith(link.getAttribute('href')))) {
+                link.classList.add('active');
+            }
+        });
+
+        // Shared utility functions
+
+        // HTML escape function
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Markdown formatting function (DRY - used across multiple pages)
+        function formatMarkdown(text) {
+            // Escape HTML first
+            let formatted = escapeHtml(text);
+
+            // Convert **bold** to <strong>
+            formatted = formatted.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+            // Convert *italic* to <em>
+            formatted = formatted.replace(/\*(.+?)\*/g, '<em>$1</em>');
+
+            // Convert line breaks to <br>
+            formatted = formatted.replace(/\n/g, '<br>');
+
+            return formatted;
+        }
+    </script>
+
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,523 @@
+{
+  "dialogues": [
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Winner",
+      "year": 2003,
+      "character_name": "Gajendran",
+      "scene_description": "Vadivelu reacts to an unfortunate situation with his signature catchphrase",
+      "dialogue_tamil": "என்ன கொடுமை சார் இது",
+      "dialogue_english": "What atrocity is this, sir?",
+      "context": "Responding to an unfortunate or absurd situation with exaggerated dismay",
+      "emotion": "comedy_dismay",
+      "metadata": {
+        "famous_quote": true,
+        "catchphrase": true,
+        "tags": [
+          "exaggeration",
+          "dismay",
+          "reaction",
+          "signature"
+        ]
+      },
+      "dialogue_tanglish": "Enna koduma sir idhu"
+    },
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Pokkiri",
+      "year": 2007,
+      "character_name": "Mani",
+      "scene_description": "Vadivelu complains about traffic in Chennai",
+      "dialogue_tamil": "என்னடா இந்த ட்ராஃபிக்",
+      "dialogue_english": "What is this traffic, dude? I left home yesterday, still stuck here today!",
+      "context": "Comedic exaggeration about Chennai traffic jams",
+      "emotion": "comedy_frustration",
+      "metadata": {
+        "tags": [
+          "traffic",
+          "exaggeration",
+          "relatable",
+          "chennai"
+        ]
+      },
+      "dialogue_tanglish": "Ennada indha traffic, naan yesterday-la veetla irundhu start panninen, innum stuck-ah irukken!"
+    },
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Maalaiyoor Mambattiyan",
+      "year": 1983,
+      "character_name": "Kaipulla",
+      "scene_description": "Vadivelu's innocent confusion creating comedy",
+      "dialogue_tamil": "நான் பேசறதே உங்களுக்கு விளங்கலையா",
+      "dialogue_english": "You don't understand what I'm saying at all?",
+      "context": "Innocent confusion leading to miscommunication comedy",
+      "emotion": "comedy_confusion",
+      "metadata": {
+        "tags": [
+          "confusion",
+          "miscommunication",
+          "innocent"
+        ]
+      },
+      "dialogue_tanglish": "Naan pesaradhey ungalukku vizhangalaya?"
+    },
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Friends",
+      "year": 2001,
+      "character_name": "Vadivelu",
+      "scene_description": "Vadivelu's self-deprecating humor about his situation",
+      "dialogue_tamil": "என் கதை கேட்டால் கதறி அழுவீங்க",
+      "dialogue_english": "If you hear my story, you'll cry your heart out",
+      "context": "Dramatic, self-deprecating introduction to his problems",
+      "emotion": "comedy_melodrama",
+      "metadata": {
+        "tags": [
+          "self-deprecating",
+          "melodrama",
+          "storytelling"
+        ]
+      },
+      "dialogue_tanglish": "En kadhai kettaa kadhara azhuveenga"
+    },
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Chandramukhi",
+      "year": 2005,
+      "character_name": "Murugesan",
+      "scene_description": "Vadivelu scared of ghosts",
+      "dialogue_tamil": "பேய் பேய்... பயமா இருக்கு",
+      "dialogue_english": "Ghost, ghost... I'm so scared!",
+      "context": "Exaggerated fear reaction creating physical comedy",
+      "emotion": "comedy_fear",
+      "metadata": {
+        "tags": [
+          "fear",
+          "ghost",
+          "physical_comedy",
+          "exaggeration"
+        ]
+      },
+      "dialogue_tanglish": "Pey pey... bayama irukku!"
+    },
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Imsai Arasan 23rd Pulikecei",
+      "year": 2006,
+      "character_name": "Pulikecei",
+      "scene_description": "Vadivelu as a confused king",
+      "dialogue_tamil": "நான் ராஜா... ஆனா என்னோட சம்பளம் மட்டும் குறைவு",
+      "dialogue_english": "I am the king... but somehow my salary is very less!",
+      "context": "Self-aware comedy about being a powerless king",
+      "emotion": "comedy_irony",
+      "metadata": {
+        "tags": [
+          "king",
+          "salary",
+          "irony",
+          "self_aware"
+        ]
+      },
+      "dialogue_tanglish": "Naan raja... aana ennoda salary mattum koraiva irukku!"
+    },
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Marudhamalai",
+      "year": 2007,
+      "character_name": "Kaatu Poochi",
+      "scene_description": "Vadivelu's philosophy on marriage",
+      "dialogue_tamil": "கல்யாணம் பண்ணிக்கணும்னா அதுக்கு முன்னாடி எல்லாரும் யோசிக்கணும்",
+      "dialogue_english": "Before getting married, everyone should think carefully. After marriage, thinking is useless!",
+      "context": "Comic wisdom about marriage and life decisions",
+      "emotion": "comedy_wisdom",
+      "metadata": {
+        "tags": [
+          "marriage",
+          "wisdom",
+          "life_advice",
+          "sarcasm"
+        ]
+      },
+      "dialogue_tanglish": "Kalyanam pannikanumna adhukku munnaadi yosikanum, kalyanam aacha piragu yosichadhula use illa!"
+    },
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Tenali",
+      "year": 2000,
+      "character_name": "Tenali",
+      "scene_description": "Vadivelu outwitting someone with cleverness",
+      "dialogue_tamil": "நான் முட்டாள் மாதிரி தெரிஞ்சாலும் புத்திசாலி",
+      "dialogue_english": "I may look like a fool, but I'm actually very clever!",
+      "context": "Playing dumb to outsmart others",
+      "emotion": "comedy_clever",
+      "metadata": {
+        "tags": [
+          "cleverness",
+          "deception",
+          "wisdom"
+        ]
+      },
+      "dialogue_tanglish": "Naan muttaal madhiri therinjaalum, actually naan puddhisaali!"
+    },
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Nagaram",
+      "year": 2007,
+      "character_name": "Auto Driver",
+      "scene_description": "Vadivelu on Chennai roads",
+      "dialogue_tamil": "சென்னை ரோட்ல ஒரே ஒரு நாள் ஓட்டுனா போதும், எல்லா பொறுமையும் கத்துக்கலாம்",
+      "dialogue_english": "Just drive one day on Chennai roads, you'll learn all the patience in the world!",
+      "context": "Commentary on chaotic Chennai traffic with humor",
+      "emotion": "comedy_observation",
+      "metadata": {
+        "tags": [
+          "chennai",
+          "traffic",
+          "patience",
+          "driving"
+        ]
+      },
+      "dialogue_tanglish": "Chennai road-la orey oru naal ottuna podhum, ella porumaiyum kathukalam!"
+    },
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Aadhavan",
+      "year": 2009,
+      "character_name": "Bannerjee",
+      "scene_description": "Vadivelu trying to act sophisticated",
+      "dialogue_tamil": "நான் வெளிநாட்டுல படிச்சவன்... ஆனா எனக்கு தமிழ் தான் comfortable",
+      "dialogue_english": "I studied abroad... but I'm more comfortable in Tamil only!",
+      "context": "Making fun of people who pretend to be too westernized",
+      "emotion": "comedy_satire",
+      "metadata": {
+        "tags": [
+          "satire",
+          "western",
+          "tamil",
+          "identity"
+        ]
+      },
+      "dialogue_tanglish": "Naan foreign-la padicha aalu... aana enakku Tamil dhan comfortable!"
+    },
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Kadhalan",
+      "year": 1994,
+      "character_name": "Mani",
+      "scene_description": "Vadivelu on love and romance",
+      "dialogue_tamil": "காதல் என்றால் கஷ்டம், அதுவும் என் மாதிரி ஆளுக்கு double கஷ்டம்",
+      "dialogue_english": "Love means suffering, especially double suffering for someone like me!",
+      "context": "Self-deprecating humor about his romantic failures",
+      "emotion": "comedy_self_deprecating",
+      "metadata": {
+        "tags": [
+          "love",
+          "self_deprecating",
+          "romance",
+          "failure"
+        ]
+      },
+      "dialogue_tanglish": "Kaadhal-na kashtam, adhuvum en madhiri aalukku double kashtam!"
+    },
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Giri",
+      "year": 2004,
+      "character_name": "Ramaswamy",
+      "scene_description": "Vadivelu explaining his logic",
+      "dialogue_tamil": "எனக்கு புரிஞ்சது என்னன்னா... எனக்கு ஒன்னும் புரியல",
+      "dialogue_english": "What I understood is... I understood nothing at all!",
+      "context": "Circular logic creating comedy through confusion",
+      "emotion": "comedy_confusion",
+      "metadata": {
+        "tags": [
+          "logic",
+          "confusion",
+          "circular",
+          "paradox"
+        ]
+      },
+      "dialogue_tanglish": "Enakku purinjadhu ennana... enakku onnum puriyala!"
+    },
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Sivaji",
+      "year": 2007,
+      "character_name": "Cell Phone Seller",
+      "scene_description": "Vadivelu selling phones with comedy",
+      "dialogue_tamil": "இந்த phone வாங்கினா உங்க வாழ்க்கையே change ஆயிடும்... அதுவும் worst-கு",
+      "dialogue_english": "If you buy this phone, your life will change... for the worst!",
+      "context": "Anti-sales pitch with brutal honesty for comedy",
+      "emotion": "comedy_honesty",
+      "metadata": {
+        "tags": [
+          "sales",
+          "honesty",
+          "technology",
+          "ironic"
+        ]
+      },
+      "dialogue_tanglish": "Indha phone vaangina unga life-ey change aayidum... adhuvum worst-ku!"
+    },
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Ellam Avan Seyal",
+      "year": 2008,
+      "character_name": "Madhi",
+      "scene_description": "Vadivelu on destiny and fate",
+      "dialogue_tamil": "எல்லாம் விதி... ஆனா விதி என்ன செஞ்சாலும் நான் suffering தான்",
+      "dialogue_english": "Everything is destiny... but whatever destiny does, I'm the one suffering!",
+      "context": "Philosophical comedy about accepting one's fate",
+      "emotion": "comedy_philosophical",
+      "metadata": {
+        "tags": [
+          "fate",
+          "destiny",
+          "philosophy",
+          "suffering"
+        ]
+      },
+      "dialogue_tanglish": "Ellam vidhi... aana vidhi enna senjaalum naan suffering dhan!"
+    },
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Kaavalan",
+      "year": 2011,
+      "character_name": "Mayilvaganam",
+      "scene_description": "Vadivelu as a bodyguard",
+      "dialogue_tamil": "நான் பாதுகாப்பு தருவேன்... ஆனா என்னையும் யாரவது பாதுகாக்கணும்",
+      "dialogue_english": "I will give you protection... but someone needs to protect me too!",
+      "context": "Ironic comedy about a scared bodyguard",
+      "emotion": "comedy_irony",
+      "metadata": {
+        "tags": [
+          "bodyguard",
+          "protection",
+          "fear",
+          "irony"
+        ]
+      },
+      "dialogue_tanglish": "Naan protection tharuven... aana ennaiyum yaaravadhu protect pannanum!"
+    },
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Vetri Kodi Kattu",
+      "year": 2000,
+      "character_name": "Padayappa's friend",
+      "scene_description": "Vadivelu on friendship",
+      "dialogue_tamil": "நண்பர்கள் இருந்தாலே போதும், எதிரிகள் தானா வருவாங்க",
+      "dialogue_english": "If you have friends, that's enough. Enemies will come automatically!",
+      "context": "Cynical but humorous take on friendships turning sour",
+      "emotion": "comedy_cynical",
+      "metadata": {
+        "tags": [
+          "friendship",
+          "enemies",
+          "cynical",
+          "relationships"
+        ]
+      },
+      "dialogue_tanglish": "Friends irundhaale podhum, enemies thaana varuvaanga!"
+    },
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Villu",
+      "year": 2009,
+      "character_name": "Village Guy",
+      "scene_description": "Vadivelu on village vs city life",
+      "dialogue_tamil": "ஊர்ல சும்மா இருக்கலாம், ஆனா சென்னைல சும்மா இருந்தா வேலை இல்லாதவன் மாதிரி தெரியும்",
+      "dialogue_english": "In village you can be relaxed, but in Chennai if you're relaxed people think you're jobless!",
+      "context": "Social commentary on urban pressure vs rural peace",
+      "emotion": "comedy_social",
+      "metadata": {
+        "tags": [
+          "village",
+          "city",
+          "lifestyle",
+          "pressure"
+        ]
+      },
+      "dialogue_tanglish": "Ooru-la summa iruklaam, aana Chennai-la summa irundhaa vela illadhavan madhiri theriyum!"
+    },
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Kathavarayan",
+      "year": 2008,
+      "character_name": "Servant",
+      "scene_description": "Vadivelu on food",
+      "dialogue_tamil": "சாப்பாடு இருந்தா எல்லா பிரச்சனைக்கும் solution இருக்கு",
+      "dialogue_english": "If there's food, there's a solution to every problem!",
+      "context": "Simple philosophy that food solves everything",
+      "emotion": "comedy_simple",
+      "metadata": {
+        "tags": [
+          "food",
+          "philosophy",
+          "simple",
+          "hungry"
+        ]
+      },
+      "dialogue_tanglish": "Saapadu irundhaa ella problem-kukkum solution irukku!"
+    },
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Winner",
+      "year": 2003,
+      "character_name": "Gajendran",
+      "scene_description": "Vadivelu on his luck",
+      "dialogue_tamil": "என்னோட luck வேற level, எல்லாம் தலைகீழா தான் நடக்கும்",
+      "dialogue_english": "My luck is on another level, everything happens upside down!",
+      "context": "Self-deprecating humor about perpetual bad luck",
+      "emotion": "comedy_unlucky",
+      "metadata": {
+        "tags": [
+          "luck",
+          "misfortune",
+          "self_deprecating"
+        ]
+      },
+      "dialogue_tanglish": "Ennoda luck vera level, ellam thalai keezha dhan nadakkum!"
+    },
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Bharathi Kannamma",
+      "year": 1997,
+      "character_name": "Servant",
+      "scene_description": "Vadivelu on work and laziness",
+      "dialogue_tamil": "வேலை செய்யறதுக்கு பதிலா வேலை செய்ற மாதிரி நடிக்கறது easy",
+      "dialogue_english": "Instead of actually working, acting like you're working is much easier!",
+      "context": "Lazy person's philosophy with comedic honesty",
+      "emotion": "comedy_lazy",
+      "metadata": {
+        "tags": [
+          "work",
+          "laziness",
+          "honesty",
+          "philosophy"
+        ]
+      },
+      "dialogue_tanglish": "Vela seiyaradhukku badhila vela seiyara madhiri nadikkaradhu easy!"
+    },
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Rendu",
+      "year": 2006,
+      "character_name": "Sakunthala's Brother",
+      "scene_description": "Vadivelu on money",
+      "dialogue_tamil": "பணம் இல்லாம சந்தோஷமா இருக்கலாம்னு சொல்றாங்க... அது பணம் இருக்கவங்க தான் சொல்றாங்க",
+      "dialogue_english": "They say you can be happy without money... only people with money say that!",
+      "context": "Practical wisdom exposing hypocrisy",
+      "emotion": "comedy_practical",
+      "metadata": {
+        "tags": [
+          "money",
+          "happiness",
+          "hypocrisy",
+          "practical"
+        ]
+      },
+      "dialogue_tanglish": "Panam illama sandhoshama iruklaamnu solraanga... adhu panam irukkavanga dhan solraanga!"
+    },
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Thalai Nagaram",
+      "year": 2006,
+      "character_name": "Auto Driver",
+      "scene_description": "Vadivelu on Chennai auto drivers",
+      "dialogue_tamil": "மீட்டர் வச்சிருக்கோம், ஆனா அது decoration-க்கு தான்",
+      "dialogue_english": "We have the meter installed, but it's only for decoration!",
+      "context": "Honest admission of auto fare cheating with humor",
+      "emotion": "comedy_honest",
+      "metadata": {
+        "tags": [
+          "auto",
+          "chennai",
+          "meter",
+          "honest",
+          "cheating"
+        ]
+      },
+      "dialogue_tanglish": "Meter vechirukkom, aana adhu decoration-ku dhan!"
+    },
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Perazhagan",
+      "year": 2004,
+      "character_name": "Chinna",
+      "scene_description": "Vadivelu on relationships",
+      "dialogue_tamil": "எல்லா உறவும் நல்லா இருக்கு... கடன் கேட்கும் வரைக்கும்",
+      "dialogue_english": "All relationships are good... until you ask for a loan!",
+      "context": "Cynical but true observation about money and relationships",
+      "emotion": "comedy_cynical",
+      "metadata": {
+        "tags": [
+          "relationships",
+          "money",
+          "loan",
+          "truth"
+        ]
+      },
+      "dialogue_tanglish": "Ella relationship-um nalla irukku... loan kekkum varaikkum!"
+    },
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Lesa Lesa",
+      "year": 2003,
+      "character_name": "Broker",
+      "scene_description": "Vadivelu on business dealings",
+      "dialogue_tamil": "நம்பிக்கை தான் business-ல முக்கியம்... அதான் நான் யாரையும் நம்புறதில்லை",
+      "dialogue_english": "Trust is important in business... that's why I don't trust anyone!",
+      "context": "Paradoxical business philosophy with comedy",
+      "emotion": "comedy_paradox",
+      "metadata": {
+        "tags": [
+          "business",
+          "trust",
+          "paradox",
+          "cynical"
+        ]
+      },
+      "dialogue_tanglish": "Trust dhan business-la mukkiyam... adhaan naan yaaraiyum namburadhilla!"
+    },
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Anbe Sivam",
+      "year": 2003,
+      "character_name": "Kandaswamy Padayachi",
+      "scene_description": "Vadivelu on life philosophy",
+      "dialogue_tamil": "வாழ்க்கையில கஷ்டம் வந்தா சிரிச்சிட்டே face பண்ணனும்... அழுதா அது மேல tough ஆகும்",
+      "dialogue_english": "When trouble comes in life, face it with a smile... crying makes it even tougher!",
+      "context": "Optimistic philosophy delivered with trademark humor",
+      "emotion": "comedy_optimistic",
+      "metadata": {
+        "tags": [
+          "life",
+          "philosophy",
+          "optimism",
+          "resilience"
+        ]
+      },
+      "dialogue_tanglish": "Life-la kashtam vandhaa sirichitte face pannanum... azhudhaa adhu mela tough aagum!"
+    },
+    {
+      "comedian": "vadivelu",
+      "movie_name": "Vasool Raja MBBS",
+      "year": 2004,
+      "character_name": "Junior Doctor",
+      "scene_description": "Vadivelu on medical profession",
+      "dialogue_tamil": "டாக்டர் ஆனா மரியாதை கிடைக்கும்... ஆனா தூக்கம் கிடைக்காது",
+      "dialogue_english": "If you become a doctor, you get respect... but you won't get sleep!",
+      "context": "Reality of medical profession with comedic truth",
+      "emotion": "comedy_reality",
+      "metadata": {
+        "tags": [
+          "doctor",
+          "profession",
+          "reality",
+          "sacrifice"
+        ]
+      },
+      "dialogue_tanglish": "Doctor aana respect kidaikkum... aana thookkam kidaikkaadhu!"
+    }
+  ]
+}

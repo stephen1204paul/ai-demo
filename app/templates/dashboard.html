@@ -1,0 +1,375 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - AI Comedy Lab{% endblock %}
+
+{% block extra_head %}
+<style>
+    .concept-card {
+        position: relative;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    .concept-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, var(--card-color) 0%, transparent 70%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+    }
+
+    .concept-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 0 40px rgba(var(--card-rgb), 0.3),
+                    0 20px 40px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    .concept-card:hover::before {
+        opacity: 0.1;
+        animation: spotlight-pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes spotlight-pulse {
+        0%, 100% { opacity: 0.1; }
+        50% { opacity: 0.2; }
+    }
+
+    .stat-card {
+        background: linear-gradient(135deg, rgba(30, 30, 50, 0.5), rgba(20, 20, 40, 0.7));
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--stat-color);
+        box-shadow: 0 0 20px rgba(var(--stat-rgb), 0.3);
+    }
+
+    .stat-number {
+        font-family: 'Outfit', sans-serif;
+        font-weight: 800;
+        font-size: 2.5rem;
+        line-height: 1;
+        text-shadow: 0 0 20px currentColor;
+    }
+
+    .cta-button {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        background: linear-gradient(135deg, var(--spotlight-primary), #FFA500);
+        box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+    }
+
+    .cta-button::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+
+    .cta-button:hover::before {
+        width: 300px;
+        height: 300px;
+    }
+
+    .cta-button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 30px rgba(255, 215, 0, 0.5);
+    }
+
+    .feature-badge {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .feature-badge:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: scale(1.05);
+    }
+
+    .step-number {
+        background: linear-gradient(135deg, var(--spotlight-primary), var(--spotlight-secondary));
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="text-center mb-16 curtain-reveal">
+    <div class="inline-block mb-6">
+        <div class="text-8xl mb-4 animate-bounce">🎭</div>
+    </div>
+    <h1 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">
+        Welcome to <span class="gradient-text handwritten text-7xl">AI Comedy Lab</span>
+    </h1>
+    <p class="text-xl md:text-2xl text-gray-300 font-light max-w-4xl mx-auto leading-relaxed mb-8">
+        Master AI concepts through the legendary humor of Tamil cinema's greatest comedians
+    </p>
+    <div class="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-400">
+        <div class="flex items-center gap-2">
+            <span class="text-2xl">😄</span>
+            <span>Vadivelu</span>
+        </div>
+        <div class="text-gray-600">•</div>
+        <div class="flex items-center gap-2">
+            <span class="text-2xl">😎</span>
+            <span>Santhanam</span>
+        </div>
+        <div class="text-gray-600">•</div>
+        <div class="flex items-center gap-2">
+            <span class="text-2xl">🎓</span>
+            <span>Vivek</span>
+        </div>
+    </div>
+</div>
+
+<!-- Stats -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 curtain-reveal" style="animation-delay: 0.1s;">
+    <div class="stat-card rounded-2xl p-6 text-center"
+         style="--stat-color: #FFD700; --stat-rgb: 255, 215, 0">
+        <div class="stat-number" style="color: #FFD700;" id="stat-dialogues">0</div>
+        <div class="text-sm text-gray-400 mt-2 font-medium">Total Dialogues</div>
+    </div>
+    <div class="stat-card rounded-2xl p-6 text-center"
+         style="--stat-color: #00D9FF; --stat-rgb: 0, 217, 255">
+        <div class="stat-number" style="color: #00D9FF;" id="stat-conversations">0</div>
+        <div class="text-sm text-gray-400 mt-2 font-medium">Conversations</div>
+    </div>
+    <div class="stat-card rounded-2xl p-6 text-center"
+         style="--stat-color: #FF6B9D; --stat-rgb: 255, 107, 157">
+        <div class="stat-number" style="color: #FF6B9D;">4</div>
+        <div class="text-sm text-gray-400 mt-2 font-medium">AI Concepts</div>
+    </div>
+    <div class="stat-card rounded-2xl p-6 text-center"
+         style="--stat-color: #9945FF; --stat-rgb: 153, 69, 255">
+        <div class="stat-number" style="color: #9945FF;">∞</div>
+        <div class="text-sm text-gray-400 mt-2 font-medium">Laughs</div>
+    </div>
+</div>
+
+<!-- AI Concepts Grid -->
+<div class="mb-16">
+    <h2 class="text-3xl font-bold text-white mb-8 text-center">
+        Explore AI Concepts
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- RAG Card -->
+        <div class="concept-card stage-container rounded-3xl p-8 border-2 border-white/10"
+             style="--card-color: #00D9FF; --card-rgb: 0, 217, 255"
+             onclick="window.location.href='/rag'">
+            <div class="flex items-center mb-6">
+                <span class="text-6xl mr-4">🔍</span>
+                <div>
+                    <h3 class="text-3xl font-bold text-white">RAG</h3>
+                    <p class="text-sm" style="color: #00D9FF;">Retrieval Augmented Generation</p>
+                </div>
+            </div>
+            <p class="text-gray-300 mb-6 leading-relaxed">
+                Search through dialogue databases using vector similarity to find relevant context,
+                then generate responses based on retrieved information. Like giving AI a perfect memory!
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="feature-badge px-4 py-2 text-sm rounded-full font-medium" style="color: #00D9FF;">Vector Search</span>
+                <span class="feature-badge px-4 py-2 text-sm rounded-full font-medium" style="color: #00D9FF;">pgvector</span>
+                <span class="feature-badge px-4 py-2 text-sm rounded-full font-medium" style="color: #00D9FF;">Embeddings</span>
+            </div>
+            <button class="w-full py-3 px-6 rounded-xl font-semibold text-white transition-all"
+                    style="background: linear-gradient(135deg, #00D9FF, #00A8CC); box-shadow: 0 4px 20px rgba(0, 217, 255, 0.3);">
+                Try RAG →
+            </button>
+        </div>
+
+        <!-- System Prompts Card -->
+        <div class="concept-card stage-container rounded-3xl p-8 border-2 border-white/10"
+             style="--card-color: #FFD700; --card-rgb: 255, 215, 0"
+             onclick="window.location.href='/system-prompts'">
+            <div class="flex items-center mb-6">
+                <span class="text-6xl mr-4">🎭</span>
+                <div>
+                    <h3 class="text-3xl font-bold text-white">System Prompts</h3>
+                    <p class="text-sm" style="color: #FFD700;">Personality Engineering</p>
+                </div>
+            </div>
+            <p class="text-gray-300 mb-6 leading-relaxed">
+                Shape AI personality with system messages. Watch the same model respond differently
+                as Vadivelu, Santhanam, or Vivek just by changing the prompt. Pure prompt magic!
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="feature-badge px-4 py-2 text-sm rounded-full font-medium" style="color: #FFD700;">Prompt Engineering</span>
+                <span class="feature-badge px-4 py-2 text-sm rounded-full font-medium" style="color: #FFD700;">Personality</span>
+                <span class="feature-badge px-4 py-2 text-sm rounded-full font-medium" style="color: #FFD700;">Context</span>
+            </div>
+            <button class="w-full py-3 px-6 rounded-xl font-semibold text-white transition-all"
+                    style="background: linear-gradient(135deg, #FFD700, #FFA500); box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);">
+                Try System Prompts →
+            </button>
+        </div>
+
+        <!-- Fine-Tuning Card -->
+        <div class="concept-card stage-container rounded-3xl p-8 border-2 border-white/10"
+             style="--card-color: #FF6B9D; --card-rgb: 255, 107, 157"
+             onclick="window.location.href='/fine-tuning'">
+            <div class="flex items-center mb-6">
+                <span class="text-6xl mr-4">⚙️</span>
+                <div>
+                    <h3 class="text-3xl font-bold text-white">Fine-Tuning</h3>
+                    <p class="text-sm" style="color: #FF6B9D;">Model Training</p>
+                </div>
+            </div>
+            <p class="text-gray-300 mb-6 leading-relaxed">
+                Train a custom model on comedian dialogues. Learn how fine-tuning updates model weights
+                to specialize in your domain. Make AI truly understand Tamil comedy!
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="feature-badge px-4 py-2 text-sm rounded-full font-medium" style="color: #FF6B9D;">Model Training</span>
+                <span class="feature-badge px-4 py-2 text-sm rounded-full font-medium" style="color: #FF6B9D;">Custom Model</span>
+                <span class="feature-badge px-4 py-2 text-sm rounded-full font-medium" style="color: #FF6B9D;">Deep Learning</span>
+            </div>
+            <button class="w-full py-3 px-6 rounded-xl font-semibold text-white transition-all"
+                    style="background: linear-gradient(135deg, #FF6B9D, #FF1B7A); box-shadow: 0 4px 20px rgba(255, 107, 157, 0.3);">
+                Learn Fine-Tuning →
+            </button>
+        </div>
+
+        <!-- Agents Card -->
+        <div class="concept-card stage-container rounded-3xl p-8 border-2 border-white/10"
+             style="--card-color: #9945FF; --card-rgb: 153, 69, 255"
+             onclick="window.location.href='/agents'">
+            <div class="flex items-center mb-6">
+                <span class="text-6xl mr-4">🤖</span>
+                <div>
+                    <h3 class="text-3xl font-bold text-white">AI Agents</h3>
+                    <p class="text-sm" style="color: #9945FF;">Autonomous Decision-Making</p>
+                </div>
+            </div>
+            <p class="text-gray-300 mb-6 leading-relaxed">
+                Watch AI autonomously decide which tools to use. Agents can search dialogues,
+                analyze patterns, and chain multiple actions together. Intelligence in action!
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="feature-badge px-4 py-2 text-sm rounded-full font-medium" style="color: #9945FF;">Function Calling</span>
+                <span class="feature-badge px-4 py-2 text-sm rounded-full font-medium" style="color: #9945FF;">Tool Use</span>
+                <span class="feature-badge px-4 py-2 text-sm rounded-full font-medium" style="color: #9945FF;">Autonomous</span>
+            </div>
+            <button class="w-full py-3 px-6 rounded-xl font-semibold text-white transition-all"
+                    style="background: linear-gradient(135deg, #9945FF, #7014E8); box-shadow: 0 4px 20px rgba(153, 69, 255, 0.3);">
+                Try Agents →
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- How It Works -->
+<div class="stage-container rounded-3xl p-10 mb-16 curtain-reveal" style="animation-delay: 0.3s;">
+    <h2 class="text-4xl font-bold text-white mb-8 text-center">
+        <span class="gradient-text">How It Works</span>
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="flex gap-6">
+            <div class="step-number flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center font-black text-2xl text-black">
+                1
+            </div>
+            <div>
+                <h3 class="text-xl font-bold text-white mb-2">Choose an AI Concept</h3>
+                <p class="text-gray-400 leading-relaxed">Select RAG, System Prompts, Fine-Tuning, or Agents to explore different ways AI learns and adapts.</p>
+            </div>
+        </div>
+        <div class="flex gap-6">
+            <div class="step-number flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center font-black text-2xl text-black">
+                2
+            </div>
+            <div>
+                <h3 class="text-xl font-bold text-white mb-2">Interact with the System</h3>
+                <p class="text-gray-400 leading-relaxed">Type questions or topics and see how AI responds using the selected technique with comedy dialogues.</p>
+            </div>
+        </div>
+        <div class="flex gap-6">
+            <div class="step-number flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center font-black text-2xl text-black">
+                3
+            </div>
+            <div>
+                <h3 class="text-xl font-bold text-white mb-2">See Behind the Scenes</h3>
+                <p class="text-gray-400 leading-relaxed">Educational explanations show exactly what's happening at each step - no black boxes!</p>
+            </div>
+        </div>
+        <div class="flex gap-6">
+            <div class="step-number flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center font-black text-2xl text-black">
+                4
+            </div>
+            <div>
+                <h3 class="text-xl font-bold text-white mb-2">Compare & Learn</h3>
+                <p class="text-gray-400 leading-relaxed">Understand the differences between approaches and when to use each technique in real applications.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CTA Section -->
+<div class="stage-container rounded-3xl p-12 text-center curtain-reveal" style="animation-delay: 0.4s; border: 2px solid rgba(255, 215, 0, 0.2);">
+    <div class="text-6xl mb-6">🎬</div>
+    <h3 class="text-3xl font-bold text-white mb-4">Ready to Start Learning?</h3>
+    <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+        New to the platform? Start with <strong class="gradient-text">RAG</strong> - it's the most foundational concept
+        and easiest to understand. Then explore the others!
+    </p>
+    <a href="/rag" class="cta-button inline-block px-10 py-4 rounded-xl text-lg font-bold text-black">
+        Start with RAG →
+    </a>
+</div>
+
+<script>
+async function fetchStats() {
+    try {
+        const response = await fetch('/api/stats');
+        const data = await response.json();
+
+        // Animate numbers
+        animateNumber('stat-dialogues', data.total_dialogues || 0);
+        animateNumber('stat-conversations', data.total_conversations || 0);
+    } catch (error) {
+        console.error('Error fetching stats:', error);
+    }
+}
+
+function animateNumber(elementId, target) {
+    const element = document.getElementById(elementId);
+    if (!element) return;
+
+    const duration = 1500;
+    const start = 0;
+    const increment = target / (duration / 16);
+    let current = start;
+
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = target;
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current);
+        }
+    }, 16);
+}
+
+// Fetch stats on page load
+fetchStats();
+</script>
+{% endblock %}

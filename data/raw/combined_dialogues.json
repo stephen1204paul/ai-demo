@@ -1,0 +1,752 @@
+[
+  {
+    "id": 1,
+    "comedian": "Vadivelu",
+    "dialogue_tanglish": "Vada poche...",
+    "dialogue_english": "The vada is gone...",
+    "context": "Vadivelu attempts to steal a vada (snack) but loses it to a crow unexpectedly.",
+    "emotion": "Disappointment",
+    "embedding": null,
+    "created_at": "2024-05-22T10:00:00Z"
+  },
+  {
+    "id": 2,
+    "comedian": "Vadivelu",
+    "dialogue_tanglish": "Naanum rowdy dhaan, naanum rowdy dhaan!",
+    "dialogue_english": "I am also a rowdy! I am also a rowdy!",
+    "context": "Screaming in a police station to get arrested and gain street credibility.",
+    "emotion": "Desperation",
+    "embedding": null,
+    "created_at": "2024-05-22T10:01:00Z"
+  },
+  {
+    "id": 3,
+    "comedian": "Vadivelu",
+    "dialogue_tanglish": "Building strong-u, basement weak-u.",
+    "dialogue_english": "The building is strong, but the basement is weak.",
+    "context": "Boasting about physical appearance while admitting to poor health/stamina.",
+    "emotion": "Self-deprecating",
+    "embedding": null,
+    "created_at": "2024-05-22T10:02:00Z"
+  },
+  {
+    "id": 4,
+    "comedian": "Vadivelu",
+    "dialogue_tanglish": "Aahaa... Onnu kooditangayya, onnu kooditangayya!",
+    "dialogue_english": "Oh my! They have all gathered, they have all gathered!",
+    "context": "Reacting to a group of enemies or ghosts gathering in one spot.",
+    "emotion": "Fear/Shock",
+    "embedding": null,
+    "created_at": "2024-05-22T10:03:00Z"
+  },
+  {
+    "id": 5,
+    "comedian": "Vadivelu",
+    "dialogue_tanglish": "Why blood? Same blood.",
+    "dialogue_english": "Why is there blood? It is the same blood.",
+    "context": "Trying to diffuse a tense situation after getting beaten up, implying unity.",
+    "emotion": "Confused/Funny",
+    "embedding": null,
+    "created_at": "2024-05-22T10:04:00Z"
+  },
+  {
+    "id": 6,
+    "comedian": "Vadivelu",
+    "dialogue_tanglish": "Sona mutha... pocha?",
+    "dialogue_english": "Sona mutha... is it gone?",
+    "context": "Realizing that he has been tricked and lost all his money/status.",
+    "emotion": "Heartbreak/Shock",
+    "embedding": null,
+    "created_at": "2024-05-22T10:05:00Z"
+  },
+  {
+    "id": 7,
+    "comedian": "Vadivelu",
+    "dialogue_tanglish": "Vena... valikkuthu... azhuthuruven!",
+    "dialogue_english": "Don't... it hurts... I will cry!",
+    "context": "Begging someone to stop beating him in a childish manner.",
+    "emotion": "Childish/Fear",
+    "embedding": null,
+    "created_at": "2024-05-22T10:06:00Z"
+  },
+  {
+    "id": 8,
+    "comedian": "Vadivelu",
+    "dialogue_tanglish": "Risk edukrathu ellam engalukku rusk sapdra maathiri.",
+    "dialogue_english": "Taking risks is like eating a rusk for me.",
+    "context": "Bragging about bravery before doing something incredibly stupid.",
+    "emotion": "Overconfidence",
+    "embedding": null,
+    "created_at": "2024-05-22T10:07:00Z"
+  },
+  {
+    "id": 9,
+    "comedian": "Vadivelu",
+    "dialogue_tanglish": "Maapu... vachitanda aapu!",
+    "dialogue_english": "Buddy... he has set a trap!",
+    "context": "Realizing a friend or enemy has successfully tricked him.",
+    "emotion": "Realization",
+    "embedding": null,
+    "created_at": "2024-05-22T10:08:00Z"
+  },
+  {
+    "id": 10,
+    "comedian": "Vadivelu",
+    "dialogue_tanglish": "Hello Dubai-ah? En brother Mark irukara?",
+    "dialogue_english": "Hello Dubai? Is my brother Mark there?",
+    "context": "Pretending to make an international call to impress locals.",
+    "emotion": "Deception/Humor",
+    "embedding": null,
+    "created_at": "2024-05-22T10:09:00Z"
+  },
+  {
+    "id": 11,
+    "comedian": "Vadivelu",
+    "dialogue_tanglish": "Aaniye pudunga venam.",
+    "dialogue_english": "You don't need to pull the nail.",
+    "context": "Telling someone their 'help' is making things worse, so just do nothing.",
+    "emotion": "Frustration",
+    "embedding": null,
+    "created_at": "2024-05-22T10:10:00Z"
+  },
+  {
+    "id": 12,
+    "comedian": "Vadivelu",
+    "dialogue_tanglish": "Enna vachi comedy geemady pannaliye?",
+    "dialogue_english": "You aren't doing any comedy with me, are you?",
+    "context": "Suspicious that people are pranking him.",
+    "emotion": "Suspicion",
+    "embedding": null,
+    "created_at": "2024-05-22T10:11:00Z"
+  },
+  {
+    "id": 13,
+    "comedian": "Vadivelu",
+    "dialogue_tanglish": "Naa apdiye shock ayiten!",
+    "dialogue_english": "I was just shocked!",
+    "context": "Exaggerating a reaction to a surprising event.",
+    "emotion": "Exaggeration",
+    "embedding": null,
+    "created_at": "2024-05-22T10:12:00Z"
+  },
+  {
+    "id": 14,
+    "comedian": "Vadivelu",
+    "dialogue_tanglish": "Oorukkulla oru all in all azhaguraja.",
+    "dialogue_english": "An all-in-all beauty king in the town.",
+    "context": "Referring to himself as a jack-of-all-trades.",
+    "emotion": "Pride",
+    "embedding": null,
+    "created_at": "2024-05-22T10:13:00Z"
+  },
+  {
+    "id": 15,
+    "comedian": "Vadivelu",
+    "dialogue_tanglish": "Sothulayum adi vangiyachu, sethulayum adi vangiyachu.",
+    "dialogue_english": "Got beaten up in the food, got beaten up in the mud too.",
+    "context": "Lamenting that he gets beaten up wherever he goes.",
+    "emotion": "Self-pity",
+    "embedding": null,
+    "created_at": "2024-05-22T10:14:00Z"
+  },
+  {
+    "id": 16,
+    "comedian": "Vadivelu",
+    "dialogue_tanglish": "Ippo enna romba mukkiyam? Uyira? Maanama?",
+    "dialogue_english": "What is important now? Life? Or Dignity?",
+    "context": "Deciding whether to run away (save life) or stay and fight (save dignity).",
+    "emotion": "Dilemma",
+    "embedding": null,
+    "created_at": "2024-05-22T10:15:00Z"
+  },
+  {
+    "id": 17,
+    "comedian": "Vadivelu",
+    "dialogue_tanglish": "Trisha illana Nayanthara.",
+    "dialogue_english": "If not Trisha, then Nayanthara.",
+    "context": "Moving on quickly from a rejection; plenty of fish in the sea.",
+    "emotion": "Optimism/Indifference",
+    "embedding": null,
+    "created_at": "2024-05-22T10:16:00Z"
+  },
+  {
+    "id": 18,
+    "comedian": "Vadivelu",
+    "dialogue_tanglish": "Puli varuthu! Puli varuthu!",
+    "dialogue_english": "Tiger is coming! Tiger is coming!",
+    "context": "Playing a prank that eventually turns real (Boy who cried wolf scenario).",
+    "emotion": "Panic",
+    "embedding": null,
+    "created_at": "2024-05-22T10:17:00Z"
+  },
+  {
+    "id": 19,
+    "comedian": "Vadivelu",
+    "dialogue_tanglish": "Thambi tea innum varala?",
+    "dialogue_english": "Brother, has the tea not come yet?",
+    "context": "Asking irrelevantly about tea while in a serious or dangerous situation.",
+    "emotion": "Obliviousness",
+    "embedding": null,
+    "created_at": "2024-05-22T10:18:00Z"
+  },
+  {
+    "id": 20,
+    "comedian": "Vadivelu",
+    "dialogue_tanglish": "Varatta...?",
+    "dialogue_english": "Shall I leave...?",
+    "context": "Trying to escape a situation quietly before getting caught.",
+    "emotion": "Sneaky",
+    "embedding": null,
+    "created_at": "2024-05-22T10:19:00Z"
+  },
+  {
+    "id": 21,
+    "comedian": "Vadivelu",
+    "dialogue_tanglish": "Cool down... cool down.",
+    "dialogue_english": "Cool down... cool down.",
+    "context": "Trying to calm an angry mob or person he has offended.",
+    "emotion": "Nervousness",
+    "embedding": null,
+    "created_at": "2024-05-22T10:20:00Z"
+  },
+  {
+    "id": 22,
+    "comedian": "Vadivelu",
+    "dialogue_tanglish": "Avana nee?",
+    "dialogue_english": "Is that you?",
+    "context": "Recognizing someone who has changed significantly or done something unexpected.",
+    "emotion": "Disbelief",
+    "embedding": null,
+    "created_at": "2024-05-22T10:21:00Z"
+  },
+  {
+    "id": 23,
+    "comedian": "Vadivelu",
+    "dialogue_tanglish": "Sing in the rain... I am sing in the rain.",
+    "dialogue_english": "Sing in the rain... I am singing in the rain.",
+    "context": "Singing happily unaware of impending doom.",
+    "emotion": "Joy/Ignorance",
+    "embedding": null,
+    "created_at": "2024-05-22T10:22:00Z"
+  },
+  {
+    "id": 24,
+    "comedian": "Vadivelu",
+    "dialogue_tanglish": "Naan kooda sandaikku varala.",
+    "dialogue_english": "I also didn't come for the fight.",
+    "context": "Backing out of a fight he started.",
+    "emotion": "Cowardice",
+    "embedding": null,
+    "created_at": "2024-05-22T10:23:00Z"
+  },
+  {
+    "id": 25,
+    "comedian": "Vadivelu",
+    "dialogue_tanglish": "Plan panni pannanum.",
+    "dialogue_english": "We must plan and do it.",
+    "context": "Advising that any task must be executed with a proper plan.",
+    "emotion": "Wisdom/Comedy",
+    "embedding": null,
+    "created_at": "2024-05-22T10:24:00Z"
+  },
+  {
+    "id": 26,
+    "comedian": "Vivek",
+    "dialogue_tanglish": "Eppadi iruntha naan, ippadi ayitten.",
+    "dialogue_english": "Look at how I was, and look at what I have become.",
+    "context": "Lamenting a fall from grace or loss of dignity.",
+    "emotion": "Self-pity",
+    "embedding": null,
+    "created_at": "2024-05-22T10:25:00Z"
+  },
+  {
+    "id": 27,
+    "comedian": "Vivek",
+    "dialogue_tanglish": "Kaakaiku veippel, aana ezhai kuzhandhaiku veika maatel?",
+    "dialogue_english": "You will feed rice to the crows, but you won't feed a poor child?",
+    "context": "Questioning social superstitions vs humanitarian aid.",
+    "emotion": "Social Satire",
+    "embedding": null,
+    "created_at": "2024-05-22T10:26:00Z"
+  },
+  {
+    "id": 28,
+    "comedian": "Vivek",
+    "dialogue_tanglish": "Innaikku sethaa naalaikku paal.",
+    "dialogue_english": "If you die today, milk (ritual) tomorrow.",
+    "context": "Highlighting the fleeting nature of life.",
+    "emotion": "Philosophical",
+    "embedding": null,
+    "created_at": "2024-05-22T10:27:00Z"
+  },
+  {
+    "id": 29,
+    "comedian": "Vivek",
+    "dialogue_tanglish": "Thottalum jeichalum meesaya murukku.",
+    "dialogue_english": "Win or lose, twirl your mustache.",
+    "context": "Encouraging confidence regardless of the outcome.",
+    "emotion": "Motivation",
+    "embedding": null,
+    "created_at": "2024-05-22T10:28:00Z"
+  },
+  {
+    "id": 30,
+    "comedian": "Vivek",
+    "dialogue_tanglish": "Confusion of the constitution of the institution...",
+    "dialogue_english": "Confusion of the constitution of the institution...",
+    "context": "Using fake complex English to confuse someone.",
+    "emotion": "Nonsense/Humor",
+    "embedding": null,
+    "created_at": "2024-05-22T10:29:00Z"
+  },
+  {
+    "id": 31,
+    "comedian": "Vivek",
+    "dialogue_tanglish": "Ivanunga moonja patha nallavanga maari theriyala.",
+    "dialogue_english": "Looking at their faces, they don't seem like good people.",
+    "context": "Judging a group of people who look suspicious.",
+    "emotion": "Suspicion",
+    "embedding": null,
+    "created_at": "2024-05-22T10:30:00Z"
+  },
+  {
+    "id": 32,
+    "comedian": "Vivek",
+    "dialogue_tanglish": "Take diversion.",
+    "dialogue_english": "Take diversion.",
+    "context": "Reading a road sign literally to change the topic or path.",
+    "emotion": "Sarcasm",
+    "embedding": null,
+    "created_at": "2024-05-22T10:31:00Z"
+  },
+  {
+    "id": 33,
+    "comedian": "Vivek",
+    "dialogue_tanglish": "Saavukku bayanthavan than sivan koviluku povan.",
+    "dialogue_english": "Only he who fears death goes to the Shiva temple.",
+    "context": "Mocking someone's sudden religious turn due to fear.",
+    "emotion": "Mockery",
+    "embedding": null,
+    "created_at": "2024-05-22T10:32:00Z"
+  },
+  {
+    "id": 34,
+    "comedian": "Vivek",
+    "dialogue_tanglish": "Aasa dosai appalam vadai.",
+    "dialogue_english": "Desire, dosa, papad, vada.",
+    "context": "Listing food items rhythmically to distract or annoy.",
+    "emotion": "Playful",
+    "embedding": null,
+    "created_at": "2024-05-22T10:33:00Z"
+  },
+  {
+    "id": 35,
+    "comedian": "Vivek",
+    "dialogue_tanglish": "Ponal pogattum poda.",
+    "dialogue_english": "If it goes, let it go, man.",
+    "context": "Advising someone to let go of their worries.",
+    "emotion": "Advice",
+    "embedding": null,
+    "created_at": "2024-05-22T10:34:00Z"
+  },
+  {
+    "id": 36,
+    "comedian": "Vivek",
+    "dialogue_tanglish": "Karpom karpippom.",
+    "dialogue_english": "Let us learn, let us teach.",
+    "context": "A slogan for education and spreading knowledge.",
+    "emotion": "Inspirational",
+    "embedding": null,
+    "created_at": "2024-05-22T10:35:00Z"
+  },
+  {
+    "id": 37,
+    "comedian": "Vivek",
+    "dialogue_tanglish": "Enna, chinna pillathanama irukku?",
+    "dialogue_english": "What, this is so childish?",
+    "context": "Criticizing someone's immature behavior.",
+    "emotion": "Criticism",
+    "embedding": null,
+    "created_at": "2024-05-22T10:36:00Z"
+  },
+  {
+    "id": 38,
+    "comedian": "Vivek",
+    "dialogue_tanglish": "Coffee kudikravan kovukulla povan.",
+    "dialogue_english": "He who drinks coffee will go into a coma.",
+    "context": "Spreading fake medical facts to scare people.",
+    "emotion": "Deception",
+    "embedding": null,
+    "created_at": "2024-05-22T10:37:00Z"
+  },
+  {
+    "id": 39,
+    "comedian": "Vivek",
+    "dialogue_tanglish": "Room pottu yosipangalo?",
+    "dialogue_english": "Do they rent a room just to think like this?",
+    "context": "Wondering how someone came up with such a stupid idea.",
+    "emotion": "Disbelief",
+    "embedding": null,
+    "created_at": "2024-05-22T10:38:00Z"
+  },
+  {
+    "id": 40,
+    "comedian": "Vivek",
+    "dialogue_tanglish": "Nee ellam nalla varuva da.",
+    "dialogue_english": "You will come up well in life.",
+    "context": "Sarcastic praise to someone doing something useless.",
+    "emotion": "Sarcasm",
+    "embedding": null,
+    "created_at": "2024-05-22T10:39:00Z"
+  },
+  {
+    "id": 41,
+    "comedian": "Vivek",
+    "dialogue_tanglish": "Yarume illatha kadaila yarukku da tea aathura?",
+    "dialogue_english": "Who are you making tea for in an empty shop?",
+    "context": "Questioning someone performing a task with no audience/customers.",
+    "emotion": "Confusion",
+    "embedding": null,
+    "created_at": "2024-05-22T10:40:00Z"
+  },
+  {
+    "id": 42,
+    "comedian": "Vivek",
+    "dialogue_tanglish": "Epdi maatikittan paathiya?",
+    "dialogue_english": "Did you see how he got caught?",
+    "context": "Enjoying someone else getting caught in a trap.",
+    "emotion": "Schadenfreude",
+    "embedding": null,
+    "created_at": "2024-05-22T10:41:00Z"
+  },
+  {
+    "id": 43,
+    "comedian": "Vivek",
+    "dialogue_tanglish": "Minor kunja sutta!",
+    "dialogue_english": "Minor has shot the bird!",
+    "context": "Misinterpreting a situation where someone got shot/hurt.",
+    "emotion": "Shock/Comedy",
+    "embedding": null,
+    "created_at": "2024-05-22T10:42:00Z"
+  },
+  {
+    "id": 44,
+    "comedian": "Vivek",
+    "dialogue_tanglish": "Saami kitta vendikitta kedaikum.",
+    "dialogue_english": "If you pray to God, you will get it.",
+    "context": "Mocking blind faith without effort.",
+    "emotion": "Satire",
+    "embedding": null,
+    "created_at": "2024-05-22T10:43:00Z"
+  },
+  {
+    "id": 45,
+    "comedian": "Vivek",
+    "dialogue_tanglish": "Enna kaaranam-ne theriyala.",
+    "dialogue_english": "I don't know what the reason is.",
+    "context": "Feigning ignorance about a disaster he caused.",
+    "emotion": "Innocence",
+    "embedding": null,
+    "created_at": "2024-05-22T10:44:00Z"
+  },
+  {
+    "id": 46,
+    "comedian": "Vivek",
+    "dialogue_tanglish": "Ayyo, enna ipdi panreengale?",
+    "dialogue_english": "Oh no, why are you doing this?",
+    "context": "Reacting to someone destroying his plans.",
+    "emotion": "Despair",
+    "embedding": null,
+    "created_at": "2024-05-22T10:45:00Z"
+  },
+  {
+    "id": 47,
+    "comedian": "Vivek",
+    "dialogue_tanglish": "Magane, nee romba nalla varuva.",
+    "dialogue_english": "Son, you will do very well.",
+    "context": "Blessing someone (often sarcastic).",
+    "emotion": "Sarcasm",
+    "embedding": null,
+    "created_at": "2024-05-22T10:46:00Z"
+  },
+  {
+    "id": 48,
+    "comedian": "Vivek",
+    "dialogue_tanglish": "Ithu enna pirapom?",
+    "dialogue_english": "What kind of birth is this?",
+    "context": "Questioning the absurdity of his current situation.",
+    "emotion": "Frustration",
+    "embedding": null,
+    "created_at": "2024-05-22T10:47:00Z"
+  },
+  {
+    "id": 49,
+    "comedian": "Vivek",
+    "dialogue_tanglish": "Vayasanalum un style um azhagum innum pogala.",
+    "dialogue_english": "Even though you aged, your style and beauty hasn't faded.",
+    "context": "Complimenting Rajinikanth (or himself/others) on aging gracefully.",
+    "emotion": "Admiration",
+    "embedding": null,
+    "created_at": "2024-05-22T10:48:00Z"
+  },
+  {
+    "id": 50,
+    "comedian": "Vivek",
+    "dialogue_tanglish": "Naan eppo varuven, epdi varuvennu yarukkum theriyathu.",
+    "dialogue_english": "When I will come, how I will come, nobody knows.",
+    "context": "Mimicking Rajinikanth's famous dialogue.",
+    "emotion": "Mimicry",
+    "embedding": null,
+    "created_at": "2024-05-22T10:49:00Z"
+  },
+  {
+    "id": 51,
+    "comedian": "Santhanam",
+    "dialogue_tanglish": "Deivame... neengala?",
+    "dialogue_english": "Oh God... is that you?",
+    "context": "Sarcastically praising someone who finally did something helpful.",
+    "emotion": "Sarcasm",
+    "embedding": null,
+    "created_at": "2024-05-22T10:50:00Z"
+  },
+  {
+    "id": 52,
+    "comedian": "Santhanam",
+    "dialogue_tanglish": "Nallavanga dialogue reach aagum, aana late-a reach aagum.",
+    "dialogue_english": "Good people's dialogues will reach, but it will reach late.",
+    "context": "Justifying why his advice isn't appreciated immediately.",
+    "emotion": "Confidence",
+    "embedding": null,
+    "created_at": "2024-05-22T10:51:00Z"
+  },
+  {
+    "id": 53,
+    "comedian": "Santhanam",
+    "dialogue_tanglish": "Machi, oru quarter sollen.",
+    "dialogue_english": "Buddy, order a quarter (alcohol) for me.",
+    "context": "Casual request to a friend in a bar setting.",
+    "emotion": "Casual",
+    "embedding": null,
+    "created_at": "2024-05-22T10:52:00Z"
+  },
+  {
+    "id": 54,
+    "comedian": "Santhanam",
+    "dialogue_tanglish": "Nanbenda!",
+    "dialogue_english": "Friendship, man!",
+    "context": "Proclaiming love for his friend (often while drunk or emotional).",
+    "emotion": "Brotherhood",
+    "embedding": null,
+    "created_at": "2024-05-22T10:53:00Z"
+  },
+  {
+    "id": 55,
+    "comedian": "Santhanam",
+    "dialogue_tanglish": "Kadavule, Ajith Kumar padam patha maari iruke.",
+    "dialogue_english": "Oh God, it feels like watching an Ajith Kumar movie.",
+    "context": "Reacting to a stunt or a massive buildup.",
+    "emotion": "Awe/Humor",
+    "embedding": null,
+    "created_at": "2024-05-22T10:54:00Z"
+  },
+  {
+    "id": 56,
+    "comedian": "Santhanam",
+    "dialogue_tanglish": "Namma ellam terror-u.",
+    "dialogue_english": "We are all terrors.",
+    "context": "Joking about how 'scary' or 'tough' they are.",
+    "emotion": "Playful",
+    "embedding": null,
+    "created_at": "2024-05-22T10:55:00Z"
+  },
+  {
+    "id": 57,
+    "comedian": "Santhanam",
+    "dialogue_tanglish": "Nee poi love sonna paravala, neeye vedikka paaka pora.",
+    "dialogue_english": "It's fine if you propose love, but you're just going to watch the fun.",
+    "context": "Predicting that a friend's love life will be a disaster.",
+    "emotion": "Mockery",
+    "embedding": null,
+    "created_at": "2024-05-22T10:56:00Z"
+  },
+  {
+    "id": 58,
+    "comedian": "Santhanam",
+    "dialogue_tanglish": "Factu factu factu.",
+    "dialogue_english": "Fact, fact, fact.",
+    "context": "Agreeing completely with a statement.",
+    "emotion": "Agreement",
+    "embedding": null,
+    "created_at": "2024-05-22T10:57:00Z"
+  },
+  {
+    "id": 59,
+    "comedian": "Santhanam",
+    "dialogue_tanglish": "Oorla pathu pathinanju friend vachirukavan ellam santhosama irukan.",
+    "dialogue_english": "People with 10-15 friends are happy in this town.",
+    "context": "Complaining that having just one friend (the hero) is torture.",
+    "emotion": "Frustration",
+    "embedding": null,
+    "created_at": "2024-05-22T10:58:00Z"
+  },
+  {
+    "id": 60,
+    "comedian": "Santhanam",
+    "dialogue_tanglish": "Kudikaran pechu vidinja pochu.",
+    "dialogue_english": "A drunkard's speech is gone by dawn.",
+    "context": "Dismissing promises made while drunk.",
+    "emotion": "Dismissive",
+    "embedding": null,
+    "created_at": "2024-05-22T10:59:00Z"
+  },
+  {
+    "id": 61,
+    "comedian": "Santhanam",
+    "dialogue_tanglish": "Vada poi oru beer sapdlam.",
+    "dialogue_english": "Come, let's go have a beer.",
+    "context": "Solution to all problems: drinking beer.",
+    "emotion": "Carefree",
+    "embedding": null,
+    "created_at": "2024-05-22T11:00:00Z"
+  },
+  {
+    "id": 62,
+    "comedian": "Santhanam",
+    "dialogue_tanglish": "Aiyayo!",
+    "dialogue_english": "Oh no!",
+    "context": "Standard reaction to something going wrong.",
+    "emotion": "Shock",
+    "embedding": null,
+    "created_at": "2024-05-22T11:01:00Z"
+  },
+  {
+    "id": 63,
+    "comedian": "Santhanam",
+    "dialogue_tanglish": "Kasu panam dhuddu money money.",
+    "dialogue_english": "Cash, wealth, dough, money money.",
+    "context": "Singing about the importance of money.",
+    "emotion": "Greed/Joy",
+    "embedding": null,
+    "created_at": "2024-05-22T11:02:00Z"
+  },
+  {
+    "id": 64,
+    "comedian": "Santhanam",
+    "dialogue_tanglish": "Nagaraj chola MA MLA.",
+    "dialogue_english": "Nagaraj Chola MA MLA.",
+    "context": "Introducing himself with a fake high-status title.",
+    "emotion": "Pride",
+    "embedding": null,
+    "created_at": "2024-05-22T11:03:00Z"
+  },
+  {
+    "id": 65,
+    "comedian": "Santhanam",
+    "dialogue_tanglish": "Unakku vandha ratham, enakku vandha thakkaali chutney ah?",
+    "dialogue_english": "If you bleed it's blood, if I bleed is it tomato chutney?",
+    "context": "Pointing out hypocrisy or double standards.",
+    "emotion": "Indignation",
+    "embedding": null,
+    "created_at": "2024-05-22T11:04:00Z"
+  },
+  {
+    "id": 66,
+    "comedian": "Santhanam",
+    "dialogue_tanglish": "Saar ennathu?",
+    "dialogue_english": "Sir, what is this?",
+    "context": "Questioning authority or a confused situation.",
+    "emotion": "Confusion",
+    "embedding": null,
+    "created_at": "2024-05-22T11:05:00Z"
+  },
+  {
+    "id": 67,
+    "comedian": "Santhanam",
+    "dialogue_tanglish": "Simran... Simran!",
+    "dialogue_english": "Simran... Simran!",
+    "context": "Calling out a girl's name (often mistakenly).",
+    "emotion": "Flirtatious",
+    "embedding": null,
+    "created_at": "2024-05-22T11:06:00Z"
+  },
+  {
+    "id": 68,
+    "comedian": "Santhanam",
+    "dialogue_tanglish": "Nanban da.",
+    "dialogue_english": "He is a friend, man.",
+    "context": "Defending a friend's stupid actions.",
+    "emotion": "Loyalty",
+    "embedding": null,
+    "created_at": "2024-05-22T11:07:00Z"
+  },
+  {
+    "id": 69,
+    "comedian": "Santhanam",
+    "dialogue_tanglish": "Kanna laddu thinna aasaiya?",
+    "dialogue_english": "Dear, do you wish to eat a laddu?",
+    "context": "Asking if someone wants something very desirable (too good to be true).",
+    "emotion": "Excitement",
+    "embedding": null,
+    "created_at": "2024-05-22T11:08:00Z"
+  },
+  {
+    "id": 70,
+    "comedian": "Santhanam",
+    "dialogue_tanglish": "Enna machi?",
+    "dialogue_english": "What buddy?",
+    "context": "Casual greeting or inquiry.",
+    "emotion": "Casual",
+    "embedding": null,
+    "created_at": "2024-05-22T11:09:00Z"
+  },
+  {
+    "id": 71,
+    "comedian": "Santhanam",
+    "dialogue_tanglish": "Kalachitiya?",
+    "dialogue_english": "Did you roast me?",
+    "context": "Asking if he just got insulted/mocked.",
+    "emotion": "Embarrassment",
+    "embedding": null,
+    "created_at": "2024-05-22T11:10:00Z"
+  },
+  {
+    "id": 72,
+    "comedian": "Santhanam",
+    "dialogue_tanglish": "Yov, nee loosa ya?",
+    "dialogue_english": "Hey, are you crazy?",
+    "context": "Reacting to someone's stupidity.",
+    "emotion": "Anger/Humor",
+    "embedding": null,
+    "created_at": "2024-05-22T11:11:00Z"
+  },
+  {
+    "id": 73,
+    "comedian": "Santhanam",
+    "dialogue_tanglish": "Idhu thaan ulagam.",
+    "dialogue_english": "This is the world.",
+    "context": "Philosophical take on how unfair life is.",
+    "emotion": "Resignation",
+    "embedding": null,
+    "created_at": "2024-05-22T11:12:00Z"
+  },
+  {
+    "id": 74,
+    "comedian": "Santhanam",
+    "dialogue_tanglish": "Makeup-a potutu vanthu mayakriye ma.",
+    "dialogue_english": "You put on makeup and mesmerize me.",
+    "context": "Flirting or commenting on a woman's appearance.",
+    "emotion": "Flirtatious",
+    "embedding": null,
+    "created_at": "2024-05-22T11:13:00Z"
+  },
+  {
+    "id": 75,
+    "comedian": "Santhanam",
+    "dialogue_tanglish": "Poi polappa paarunga da.",
+    "dialogue_english": "Go and mind your business/livelihood.",
+    "context": "Dismissing a crowd or useless people.",
+    "emotion": "Dismissive",
+    "embedding": null,
+    "created_at": "2024-05-22T11:14:00Z"
+  }
+]

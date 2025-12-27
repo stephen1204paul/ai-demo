@@ -1,0 +1,406 @@
+{% extends "base.html" %}
+
+{% block title %}RAG - AI Comedy Lab{% endblock %}
+
+{% block extra_head %}
+<style>
+    .filter-select {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: white;
+        transition: all 0.3s ease;
+    }
+
+    .filter-select:focus {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: #00D9FF;
+        outline: none;
+    }
+
+    .filter-select option {
+        background: #1a1a2e;
+        color: white;
+    }
+
+    .message-input {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: white;
+        transition: all 0.3s ease;
+    }
+
+    .message-input:focus {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: #00D9FF;
+        outline: none;
+    }
+
+    .message-input::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+    .dialogue-card {
+        background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(0, 168, 204, 0.05));
+        border-left: 4px solid #00D9FF;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
+
+    .dialogue-card:hover {
+        background: linear-gradient(135deg, rgba(0, 217, 255, 0.15), rgba(0, 168, 204, 0.1));
+        transform: translateX(4px);
+    }
+
+    .example-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .example-card:hover {
+        background: rgba(0, 217, 255, 0.1);
+        border-color: #00D9FF;
+        transform: translateY(-4px);
+    }
+
+    .step-card {
+        background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 165, 0, 0.05));
+        border-left: 4px solid #FFD700;
+    }
+
+    /* Hide elements */
+    #warning-banner.hidden,
+    #retrieved-empty.hidden,
+    #explanation-panel.hidden {
+        display: none;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div>
+    <!-- Header -->
+    <div class="text-center mb-12 curtain-reveal">
+        <div class="text-8xl mb-6">🔍</div>
+        <h1 class="text-6xl md:text-7xl font-black text-white mb-4 tracking-tight">
+            <span class="gradient-text handwritten text-8xl">RAG</span>
+        </h1>
+        <p class="text-2xl md:text-3xl font-light max-w-3xl mx-auto leading-relaxed mb-6" style="color: #00D9FF;">
+            Retrieval Augmented Generation
+        </p>
+        <p class="text-lg text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            Search dialogues with vector similarity and generate context-aware responses
+        </p>
+    </div>
+
+    <!-- How RAG Works -->
+    <div class="stage-container rounded-3xl p-8 mb-8 curtain-reveal" style="animation-delay: 0.1s; border-left: 4px solid #00D9FF;">
+        <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+            <span class="text-2xl">💡</span>
+            How RAG Works
+        </h3>
+        <ol class="space-y-3 text-gray-300">
+            <li class="flex gap-3">
+                <span class="text-cyan-400 font-bold">1.</span>
+                <span>Your question is converted into a vector (embedding)</span>
+            </li>
+            <li class="flex gap-3">
+                <span class="text-cyan-400 font-bold">2.</span>
+                <span>Database finds similar dialogues using vector similarity</span>
+            </li>
+            <li class="flex gap-3">
+                <span class="text-cyan-400 font-bold">3.</span>
+                <span>Retrieved dialogues are added to the AI's context</span>
+            </li>
+            <li class="flex gap-3">
+                <span class="text-cyan-400 font-bold">4.</span>
+                <span>AI generates response using both its knowledge and retrieved context</span>
+            </li>
+        </ol>
+    </div>
+
+    <!-- Main Interface -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Chat Area -->
+        <div class="lg:col-span-2 space-y-6">
+            <!-- Filters -->
+            <div class="stage-container rounded-3xl p-6 curtain-reveal" style="animation-delay: 0.2s;">
+                <h2 class="text-xl font-bold text-white mb-4">🎯 Filters (Optional)</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Comedian</label>
+                        <select id="comedian-filter" class="filter-select w-full px-4 py-3 rounded-xl">
+                            <option value="">All Comedians</option>
+                            <option value="Vadivelu">Vadivelu</option>
+                            <option value="Santhanam">Santhanam</option>
+                            <option value="Vivek">Vivek</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Emotion</label>
+                        <select id="emotion-filter" class="filter-select w-full px-4 py-3 rounded-xl">
+                            <option value="">All Emotions</option>
+                            <option value="Sarcasm">Sarcasm</option>
+                            <option value="Frustration">Frustration</option>
+                            <option value="Wisdom">Wisdom</option>
+                            <option value="Confusion">Confusion</option>
+                            <option value="Boasting">Boasting</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat -->
+            <div class="stage-container rounded-3xl p-8 curtain-reveal" style="animation-delay: 0.3s;">
+                <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                    <span>💬</span>
+                    Ask a Question
+                </h2>
+
+                <!-- Messages -->
+                <div id="messages-container" class="space-y-4 mb-6 max-h-96 overflow-y-auto"></div>
+
+                <!-- Input -->
+                <form id="chat-form">
+                    <textarea
+                        id="user-message"
+                        placeholder="Ask a question or describe a situation... (Ctrl+Enter to send)"
+                        rows="3"
+                        class="message-input w-full px-6 py-4 rounded-xl mb-4 resize-none"
+                    ></textarea>
+                    <button
+                        type="submit"
+                        id="send-btn"
+                        class="w-full py-4 px-6 rounded-xl font-semibold text-black transition-all"
+                        style="background: linear-gradient(135deg, #00D9FF, #00A8CC); box-shadow: 0 4px 20px rgba(0, 217, 255, 0.3);">
+                        <span id="send-text">🚀 Send Message</span>
+                        <span id="loading-text" class="hidden">⏳ Processing RAG...</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="space-y-6">
+            <!-- Retrieved Context -->
+            <div class="stage-container rounded-3xl p-6 curtain-reveal" style="animation-delay: 0.4s;">
+                <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                    <span>🎯</span>
+                    Retrieved Context
+                </h3>
+                <div id="warning-banner" class="hidden bg-yellow-500/20 border-l-4 border-yellow-500 p-3 mb-4 rounded">
+                    <p class="text-xs text-yellow-200">⚠️ No similar dialogues found. Using random famous dialogues instead.</p>
+                </div>
+                <div id="retrieved-empty" class="text-gray-500 text-sm">
+                    Send a message to see retrieved dialogues
+                </div>
+                <div id="retrieved-dialogues" class="space-y-3"></div>
+            </div>
+
+            <!-- Educational Explanation -->
+            <div id="explanation-panel" class="stage-container rounded-3xl p-6 curtain-reveal hidden" style="animation-delay: 0.5s;">
+                <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                    <span>📚</span>
+                    How It Worked
+                </h3>
+                <div id="explanation-steps" class="space-y-3"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Examples -->
+    <div class="stage-container rounded-3xl p-8 mt-8 curtain-reveal" style="animation-delay: 0.6s;">
+        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+            <span>💡</span>
+            Try These Examples
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="example-card rounded-2xl p-6" onclick="setExample('Tell me about dealing with difficult people')">
+                <div class="text-4xl mb-3">😤</div>
+                <h3 class="font-bold text-white mb-2">Difficult People</h3>
+                <p class="text-sm text-gray-400">Find dialogue about frustrating situations</p>
+            </div>
+            <div class="example-card rounded-2xl p-6" onclick="setExample('Give me some wisdom about life')">
+                <div class="text-4xl mb-3">🎓</div>
+                <h3 class="font-bold text-white mb-2">Life Wisdom</h3>
+                <p class="text-sm text-gray-400">Philosophical comedic insights</p>
+            </div>
+            <div class="example-card rounded-2xl p-6" onclick="setExample('Something funny about being confused')">
+                <div class="text-4xl mb-3">🤔</div>
+                <h3 class="font-bold text-white mb-2">Confusion</h3>
+                <p class="text-sm text-gray-400">Comedy from bewilderment</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let sessionId = null;
+let isLoading = false;
+
+// DOM elements
+const chatForm = document.getElementById('chat-form');
+const userMessage = document.getElementById('user-message');
+const sendBtn = document.getElementById('send-btn');
+const sendText = document.getElementById('send-text');
+const loadingText = document.getElementById('loading-text');
+const messagesContainer = document.getElementById('messages-container');
+const comedianFilter = document.getElementById('comedian-filter');
+const emotionFilter = document.getElementById('emotion-filter');
+const retrievedDialogues = document.getElementById('retrieved-dialogues');
+const retrievedEmpty = document.getElementById('retrieved-empty');
+const warningBanner = document.getElementById('warning-banner');
+const explanationPanel = document.getElementById('explanation-panel');
+const explanationSteps = document.getElementById('explanation-steps');
+
+// Set example
+function setExample(text) {
+    userMessage.value = text;
+    userMessage.focus();
+}
+
+// Handle form submission
+chatForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!userMessage.value.trim() || isLoading) return;
+
+    const message = userMessage.value.trim();
+    userMessage.value = '';
+
+    addMessage('user', message);
+    setLoading(true);
+
+    try {
+        const response = await fetch('/rag/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                message: message,
+                session_id: sessionId,
+                comedian: comedianFilter.value || undefined,
+                emotion: emotionFilter.value || undefined
+            })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            sessionId = data.session_id;
+            addMessage('assistant', data.response, data.response_time_ms);
+            showRetrievedDialogues(data.retrieved_dialogues || [], data.retrieval_method);
+            showExplanation(data.educational_explanation);
+        } else {
+            addMessage('error', `Error: ${data.error || 'Unknown error'}`);
+        }
+    } catch (error) {
+        addMessage('error', `Error: ${error.message}`);
+    } finally {
+        setLoading(false);
+    }
+});
+
+// Ctrl+Enter to send
+userMessage.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.key === 'Enter') {
+        chatForm.dispatchEvent(new Event('submit'));
+    }
+});
+
+function setLoading(loading) {
+    isLoading = loading;
+    sendBtn.disabled = loading;
+    if (loading) {
+        sendText.classList.add('hidden');
+        loadingText.classList.remove('hidden');
+    } else {
+        sendText.classList.remove('hidden');
+        loadingText.classList.add('hidden');
+    }
+}
+
+function addMessage(role, content, responseTime) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'message-bubble rounded-2xl px-6 py-4';
+
+    if (role === 'user') {
+        messageDiv.style.background = 'rgba(255, 255, 255, 0.05)';
+        messageDiv.innerHTML = `
+            <div class="text-sm text-gray-400 mb-1">👤 You</div>
+            <div class="text-white">${escapeHtml(content)}</div>
+        `;
+    } else if (role === 'assistant') {
+        messageDiv.style.background = 'rgba(0, 217, 255, 0.1)';
+        messageDiv.style.borderLeft = '4px solid #00D9FF';
+        messageDiv.innerHTML = `
+            <div class="text-sm font-semibold mb-1" style="color: #00D9FF;">🤖 AI (RAG)</div>
+            <div class="text-white leading-relaxed">${formatMarkdown(content)}</div>
+            ${responseTime ? `<div class="text-xs text-gray-500 mt-2">Response time: ${responseTime}ms</div>` : ''}
+        `;
+    } else {
+        messageDiv.style.background = 'rgba(255, 107, 157, 0.1)';
+        messageDiv.style.borderLeft = '4px solid #FF6B9D';
+        messageDiv.innerHTML = `
+            <div class="text-sm font-semibold mb-1" style="color: #FF6B9D;">⚠️ Error</div>
+            <div class="text-white">${escapeHtml(content)}</div>
+        `;
+    }
+
+    messagesContainer.appendChild(messageDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+function showRetrievedDialogues(dialogues, retrievalMethod) {
+    retrievedEmpty.classList.add('hidden');
+
+    if (retrievalMethod === 'fallback_random') {
+        warningBanner.classList.remove('hidden');
+    } else {
+        warningBanner.classList.add('hidden');
+    }
+
+    if (dialogues.length === 0) {
+        retrievedEmpty.classList.remove('hidden');
+        retrievedDialogues.innerHTML = '';
+        return;
+    }
+
+    retrievedDialogues.innerHTML = dialogues.map(dialogue => `
+        <div class="dialogue-card rounded-xl p-4 text-sm">
+            <div class="font-semibold mb-2" style="color: #00D9FF;">
+                ${escapeHtml(dialogue.comedian)}
+                ${dialogue.emotion ? `<span class="text-xs text-cyan-400 ml-1">(${escapeHtml(dialogue.emotion)})</span>` : ''}
+            </div>
+            <div class="text-gray-300 italic mb-2">
+                "${escapeHtml(dialogue.dialogue_english)}"
+            </div>
+            ${dialogue.similarity !== null ?
+                `<div class="text-xs text-gray-500">Similarity: ${Math.round(dialogue.similarity * 100)}%</div>` :
+                `<div class="text-xs text-gray-500 italic">(Random famous dialogue)</div>`
+            }
+            ${dialogue.context ? `<div class="text-xs text-gray-500 mt-1">Context: ${escapeHtml(dialogue.context)}</div>` : ''}
+        </div>
+    `).join('');
+}
+
+function showExplanation(explanation) {
+    if (!explanation || !explanation.steps) {
+        explanationPanel.classList.add('hidden');
+        return;
+    }
+
+    explanationPanel.classList.remove('hidden');
+    explanationSteps.innerHTML = explanation.steps.map(step => `
+        <div class="step-card rounded-xl p-4 text-sm">
+            <div class="font-semibold mb-1" style="color: #FFD700;">
+                Step ${step.step}: ${escapeHtml(step.title)}
+            </div>
+            <div class="text-gray-300 mt-1">${escapeHtml(step.description)}</div>
+            ${step.technical ? `<div class="text-xs text-gray-500 mt-2 font-mono">${escapeHtml(step.technical)}</div>` : ''}
+        </div>
+    `).join('');
+}
+
+// Note: escapeHtml() and formatMarkdown() are now in base.html (DRY principle)
+</script>
+{% endblock %}
